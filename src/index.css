@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mitr:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.app {
+    height: 100%;
+    width: 100%;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    @apply text-gray-500;
+}
+
+button {
+    font-family: "Mitr", sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+colors {
+    --gray-20: #F9FCFD;
+    --gray-50: #DADDDD;
+    --gray-100: hsl(185, 37%, 35%);
+    --gray-500: hsl(186, 37%, 10%);
+    --primary-100: hsl(189,93%,45%);
+    --primary-300: hsl(189, 93%, 85%);
+    --primary-500: hsl(189, 93, 35%);
+    --secondary-400: hsl(180, 35%, 45%);
+    --secondary-500: hsl(180, 35%, 78%);
+}
