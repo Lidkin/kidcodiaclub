@@ -26,15 +26,15 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
         {isAboveMediumScreens ?
           (
             <>
-                <img style={{width: '80px'}} alt="logo" src={Logo} />
-
+                <img style={{ width: '80px' }} alt="logo" src={Logo} />
+                
               <div className={`${flexBetween} w-full`}>
-                <div className={`${flexBetween} gap-8 text-md`}>
-                  <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                  <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                  <Link page="Scratch" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                  <Link page="Python" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                </div>
+                  <div className={`${flexBetween} gap-8 text-md`}>
+                      <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                      <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                      <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                      <Link page="Enroll" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                                                                        </div>
                 <div className={`${flexBetween} gap-8`}>
                   <p>Want to code?</p>
                   <ActionButton setSelectedPage={setSelectedPage}>Enroll</ActionButton>
@@ -64,11 +64,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
         </div>
         <div className="ml-[33%] flex flex-col gap-10 text-2xl">
           <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-          <Link page="About" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-          <Link page="Scratch" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-          <Link page="Python" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-          <Link page="Register" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-
+          <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+          <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+          <Link page="Enroll" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
         </div>
       </div>
     )}

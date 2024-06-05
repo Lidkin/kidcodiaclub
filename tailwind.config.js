@@ -11,6 +11,7 @@ export default {
         "gray-50": "#DADDDD",
         "gray-100": "hsl(185, 37%, 35%)",
         "gray-500": "hsl(186, 37%, 10%)",
+        "primary-50": "hsl(189, 93%, 90%)",
         "primary-100": "hsl(189,93%,45%)",
         "primary-300": "hsl(189, 93%, 65%)",
         "primary-500": "hsl(189, 93%, 35%)",
@@ -19,8 +20,9 @@ export default {
         "secondary-500": "hsl(180, 35%, 78%)",
       },
       backgroundImage: (theme) => ({
-        "gradient-yellowred": "linear-gradient(90deg, #FF616A 0%, #FFC837 100%)",
-        "home-page": "url('./assets/25332.jpg')",
+        "javascript": "url(./assets/javascript.gif)",
+        "binarycode": "url(./assets/bg-binarycode.png",
+        "logic": "url(./assets/logic.gif)"
       }),
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],

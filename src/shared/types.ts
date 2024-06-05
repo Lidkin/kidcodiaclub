@@ -1,17 +1,22 @@
 export enum SelectedPage { 
     Home = "home",
     Offerings ="offerings",
-    Scratch = "scratch",
-    Python = "python",
-    Register = "register",
+    Classes = "classes",
+    Enroll = "enroll",
 }
 
 export enum QueryWidth {
     MinWidth = "(min-width:900px)",
 }
 
-export interface OfferingsType{ 
+export interface OfferingType{ 
     icon: JSX.Element;
     title: string;
     description: string;
+}
+
+export interface ClassType { 
+    name: string;
+    image: string;
+    description?: string;
 }

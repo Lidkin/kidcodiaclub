@@ -1,6 +1,6 @@
 import Htext from "@/shared/Htext";
-import { OfferingsType, SelectedPage } from "@/shared/types";
-import OfferingsImage from "@/assets/close-up-kids-with-thumbs-up.png"
+import { OfferingType, SelectedPage } from "@/shared/types";
+import OfferingsImage from "@/assets/offerings.png"
 import TimeTable from "@/assets/icons/timetable.png";
 import AgeGroop from "@/assets/icons/age-group.png";
 import Inclusive from "@/assets/icons/inclusive.png";
@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import Offering from "./Offering";
 import ActionButton from "@/shared/ActionButton";
 
-const offerings: Array<OfferingsType> = [
+const offerings: Array<OfferingType> = [
     {
         icon: <img src={TimeTable} className="h-8 w-8" />,
         title: "Engaging Curriculum",
@@ -68,7 +68,7 @@ const Offerings = ({ setSelectedPage }: Props) => {
                   viewport={{ once: true, amount: 0.5 }}
                   variants={container}
               >
-                  {offerings.map((offering: OfferingsType) => (
+                  {offerings.map((offering: OfferingType) => (
                       <Offering
                           key={offering.title}
                           icon={offering.icon}
@@ -107,7 +107,7 @@ const Offerings = ({ setSelectedPage }: Props) => {
                               
                       </div>
                       <motion.div
-                                                   initial="hidden"
+                            initial="hidden"
                              whileInView="visible"
                              viewport={{ once: true, amount: 0.5 }}
                              transition={{ delay: 0.2, duration: 1 }}
