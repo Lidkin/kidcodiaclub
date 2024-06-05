@@ -21,7 +21,7 @@ export default {
       },
       backgroundImage: (theme) => ({
         "javascript": "url(./assets/javascript.gif)",
-        "binarycode": "url(./assets/bg-binarycode.png",
+        "binarycode": "url(./assets/bg-binarycode-md.png)",
         "logic": "url(./assets/logic.gif)"
       }),
       fontFamily: {
@@ -33,6 +33,7 @@ export default {
         smile: "url('./assets/smile.png')",
         tongue: "url('./assets/tongue.png')",
         wonderment: "url(./assets/wonderment.png)",
+        enroll: "url('./assets/kidcodia-text.png')"
       }
     },
     screens: {

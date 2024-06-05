@@ -3,3 +3,6 @@ age-groop
 
 timetable
 <div> Icons made by <a href="https://www.flaticon.com/authors/iconbaandar" title="IconBaandar"> IconBaandar </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
+
+inclusive
+<div> Icons made by <a href="https://www.flaticon.com/authors/gravisio" title="gravisio"> gravisio </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>

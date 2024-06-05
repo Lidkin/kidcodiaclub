@@ -62,7 +62,7 @@ const Offerings = ({ setSelectedPage }: Props) => {
               </motion.div> 
               {/* Offerings */}
               <motion.div
-                  className="mt-5 items-center md:flex md:justify-between md:gap-8 md:mx-2 lg:gap-24"
+                  className="mt-5 items-center md:flex md:justify-between md:gap-8 md:mx-2 lg:gap-24 md:bg-binarycode md:bg-cover md:bg-no-repeat md:bg-center"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}

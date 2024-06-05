@@ -19,7 +19,7 @@ const Offering = ({ icon, title, description, setSelectedPage }: Props) => {
   return (
       <motion.div
           variants={childVariant}
-          className='mt-5 rounded-md border-2 border-gray-100 px-5 py-12 text-center md:flex md:flex-col md:w-[300px] lg:w-[550px] md:h-[450px] md:justify-between'>
+          className='mt-5 rounded-md border-2 border-gray-100 px-5 py-12 text-center md:flex md:flex-col md:w-[300px] lg:w-[550px] md:h-[450px] md:justify-between bg-gray-20'>
             <div className='mb-5 flex justify-center'>
                 <div className='rounded-full border-2 border-gray-100 bg-gray-200 p-6'>
                     { icon }
@@ -29,8 +29,8 @@ const Offering = ({ icon, title, description, setSelectedPage }: Props) => {
             <p className='my-3'>{description}</p>
             <AnchorLink
                 className='text-sm font-bold text-primary-100 underline hover:text-secondary-400'
-                    onClick={() => setSelectedPage(SelectedPage.Register)}
-                    href={`${SelectedPage.Register}`}                          
+                    onClick={() => setSelectedPage(SelectedPage.Enroll)}
+                    href={`${SelectedPage.Enroll}`}                          
                 >
                 <p>Learn More</p>
             </AnchorLink>

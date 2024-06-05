@@ -19,4 +19,5 @@ export interface ClassType {
     name: string;
     image: string;
     description?: string;
+    afterbg?: string;
 }

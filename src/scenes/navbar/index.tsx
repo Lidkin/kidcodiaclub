@@ -6,6 +6,7 @@ import { SelectedPage, QueryWidth } from "@/shared/types";
 import ActionButton from '@/shared/ActionButton';
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useState } from "react";
+import Htext from "@/shared/Htext";
 
 type Props = {
   isTopOfPage: boolean;
@@ -35,10 +36,15 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                       <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                       <Link page="Enroll" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                                                                         </div>
-                <div className={`${flexBetween} gap-8`}>
-                  <p>Want to code?</p>
-                  <ActionButton setSelectedPage={setSelectedPage}>Enroll</ActionButton>
-                </div>        
+                  { selectedPage !== 'enroll' ? <div className={`${flexBetween} gap-8`}>                    
+                        <p>Want to code?</p>
+                        <ActionButton setSelectedPage={setSelectedPage}>Enroll</ActionButton>
+                  </div> :
+                    <div>
+                      <Htext> WELCOME TO<span className='text-primary-100'> KIDCODIA </span></Htext>
+                      </div>
+                    
+                }  
               </div> 
             </>  
           ) : ( 
