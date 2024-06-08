@@ -11,6 +11,7 @@ body,
     width: 100%;
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
+    background-color: #F9FCFD;
     @apply text-gray-500;
 }
 
@@ -31,4 +32,19 @@ colors {
     --primary-500: hsl(189, 93, 35%);
     --secondary-400: hsl(180, 35%, 45%);
     --secondary-500: hsl(180, 35%, 78%);
+}
+
+/*
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+*/
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }

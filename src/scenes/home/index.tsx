@@ -5,7 +5,6 @@ import HomePageText from '@/assets/kidcodia.png';
 import HomePageGraphic from '@/assets/laptop-classroom-home.png';
 import DILogo from '@/assets/LogoDI.png';
 import ScratchLogo from '@/assets/Scratch-cat-logo-300x300px.png';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -18,7 +17,7 @@ const Home = ({ setSelectedPage }: Props) => {
   return (
       <section
           id="home"
-          className='gap-16 bg-gray-20 py-10 md:h-full md:pb-0'
+          className='gap-16 bg-gray-20 pt-10 md:h-full'
       >
             <motion.div
               className="w-5/6 items-center justify-center md:flex md:h-5/6 mx-auto"
@@ -63,13 +62,6 @@ const Home = ({ setSelectedPage }: Props) => {
                       <ActionButton setSelectedPage={setSelectedPage}>
                           Enroll
                       </ActionButton>
-                      <AnchorLink
-                          className='text-sm font-bold text-primary-300 underline hover:text-secondary-400'
-                          onClick={() => setSelectedPage(SelectedPage.Enroll)}
-                          href={`${SelectedPage.Enroll}`}                          
-                      >
-                          <p>Learn More</p>
-                      </AnchorLink>
                   </motion.div>
               </div>
 
@@ -79,18 +71,18 @@ const Home = ({ setSelectedPage }: Props) => {
                   <img alt="home-page-graphic" src={HomePageGraphic} />
               </div>
               
-          </motion.div>
+            </motion.div>
 
           {/* externals */}
           {isAboveMediumScreens && (
             <div className='h-[150px] w-full bg-primary-100 py-10'>
                   <div className='mx-auto w-5/6'>
-                      <div className='flex w-3/5 items-center justify-between gap-8'>
+                      <div className='flex w-3/5 items-center gap-8'>
                           <a href='https://developers.institute/'>
                               <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
                           </a>
                           <a href='https://scratch.mit.edu/'>
-                              <img className='w-full max-w-24' src={ScratchLogo} alt="externals-scratch" />
+                              <img className='w-full max-w-24 h-20' src={ScratchLogo} alt="externals-scratch" />
                           </a>
                     </div>
                 </div>

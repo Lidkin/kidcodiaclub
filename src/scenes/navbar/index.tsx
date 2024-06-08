@@ -16,7 +16,7 @@ type Props = {
 
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
-  const flexBetween = "flex items-center justify-between";
+  const flexBetween = "flex items-center justify-between z-[1000]";
   const isAboveMediumScreens = useMediaQuery(QueryWidth.MinWidth);
   const navbarBackground = isTopOfPage ? "" : "bg-gray-20";
 
@@ -32,9 +32,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               <div className={`${flexBetween} w-full`}>
                   <div className={`${flexBetween} gap-8 text-md`}>
                       <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                      <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                      {/* <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} /> */}
                       <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-                      <Link page="Enroll" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+                      <Link page="Adress" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                                                                         </div>
                   { selectedPage !== 'enroll' ? <div className={`${flexBetween} gap-8`}>                    
                         <p>Want to code?</p>
@@ -70,7 +70,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
         </div>
         <div className="ml-[33%] flex flex-col gap-10 text-2xl">
           <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-          <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+          {/* <Link page="Offerings" selectedPage={selectedPage} setSelectedPage={setSelectedPage} /> */}
           <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
           <Link page="Enroll" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
         </div>

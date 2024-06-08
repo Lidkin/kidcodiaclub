@@ -40,12 +40,12 @@ const Enroll = ({ setSelectedPage }: Props) => {
         }
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         reset();
     }, [isSubmitSuccessful, reset])
 
     return (
-        <section id='enroll' className='mx-auto w-5/6 pt-24 pb-32'>
+        <section id='enroll' className='mx-auto w-5/6 xxxs:pt-24 md:pt-32 pb-32'>
             <motion.div
                 onViewportEnter={() => setSelectedPage(SelectedPage.Enroll)}>
                 <motion.div
@@ -83,8 +83,6 @@ const Enroll = ({ setSelectedPage }: Props) => {
                         {/* Start Form */}
 
                         <form
-                            target="_blank"
-                            onSubmit={handleSubmit(onSubmit)}
                             action="https://formsubmit.co/023177d25875ee7912e5274e047bbdd1"
                             method="POST"
                         >
@@ -116,8 +114,9 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                     {errors.email.type === "pattern" && "Invalid email address."}
                                 </p>
                             )}
-                            <fieldset className='my-1 text-primary-500 font-bold'>{labelText}
-                                <div className={`${inputStyles} justify-between flex`}>
+                            <div className='mt-5'>
+                                <p className='my-1 text-primary-500 font-bold'>{labelText}</p>
+                                <div className='w-full flex justify-between rounded-lg bg-primary-300 pl-5 pr-24 py-3 text-gray-20'>
                                     <label htmlFor="sunday">SUNDAY
                                         <input
                                             className='ml-2'
@@ -126,7 +125,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                             value="sunday"
                                             {...register("sunday")} />
                                     </label>
-                                    <label htmlFor="tuesday">SUNDAY
+                                    <label htmlFor="tuesday">TUESDAY
                                         <input
                                             className='ml-2'
                                             id='tuesday'
@@ -143,18 +142,20 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                             {...register("wednesday")} />
                                     </label>
                                 </div>
+                            </div>
 
-                            </fieldset>
-                            <label htmlFor="select" className='my-1 text-primary-500 font-bold'>{radioText}</label>
-                            <fieldset className='w-full flex justify-between rounded-lg bg-primary-300 pl-5 pr-24 py-3 text-gray-20'>
-                                <label htmlFor="one">ONE
-                                    <input className="mx-2" id='one' {...register("days", { required: true })} type='radio' value="1" title='1' />
-                                </label>
-                                <label htmlFor="two">TWO
-                                    <input className="mx-2" id='two'{...register("days", { required: true })} type='radio' value="2" /></label>
-                                <label htmlFor="three">THREE
-                                    <input className="mx-2" id='three' {...register("days", { required: true })} type='radio' value="3" /></label>
-                            </fieldset>
+                            <div className='mt-5'>
+                                <p className='my-1 text-primary-500 font-bold'>{radioText}</p>
+                                <div className='w-full flex justify-between rounded-lg bg-primary-300 pl-5 pr-24 py-3 text-gray-20'>
+                                    <label htmlFor="one">ONE
+                                        <input className="mx-2" id='one' {...register("days", { required: true })} type='radio' value="1" title='1' />
+                                    </label>
+                                    <label htmlFor="two">TWO
+                                        <input className="mx-2" id='two'{...register("days", { required: true })} type='radio' value="2" /></label>
+                                    <label htmlFor="three">THREE
+                                        <input className="mx-2" id='three' {...register("days", { required: true })} type='radio' value="3" /></label>
+                                </div>
+                            </div>
                             <textarea
                                 className={inputStyles}
                                 rows={4}
@@ -169,6 +170,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 </p>
                             )}
                             <button
+                                onSubmit={handleSubmit(onSubmit)}
                                 type='submit'
                                 className='w-full my-5 rounded-lg bg-primary-500 text-white hover:bg-secondary-500 px-20 py-3 transition duration-500 hover:text-primary-500'
                             >

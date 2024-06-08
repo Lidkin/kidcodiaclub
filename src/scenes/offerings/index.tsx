@@ -49,7 +49,8 @@ const Offerings = ({ setSelectedPage }: Props) => {
           <motion.div
           onViewportEnter={() => setSelectedPage(SelectedPage.Offerings)}
           >
-              <motion.div className="md:my-5 md:w-3/5"
+              <motion.div
+                  className="md:my-5 md:w-3/5"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}

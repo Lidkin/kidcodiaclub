@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        dxs: "0.6rem",
+        pxs: "0.7rem",
+      },
       colors: {
         "gray-20": "#F9FCFD",
         "gray-50": "#DADDDD",
@@ -16,6 +20,7 @@ export default {
         "primary-300": "hsl(189, 93%, 65%)",
         "primary-500": "hsl(189, 93%, 35%)",
         "secondary-10": "hsl(180, 0%, 100%)",
+        "secondary-50": "#FFC300",
         "secondary-400": "hsl(180, 35%, 45%)",
         "secondary-500": "hsl(180, 35%, 78%)",
       },
@@ -30,6 +35,7 @@ export default {
       },
       content: {
         kidcodiatext: "url('./assets/bg-kidcodia.png')",
+        textkidcodia: "url('./assets/kidcodia-bg.png')",
         smile: "url('./assets/smile.png')",
         tongue: "url('./assets/tongue.png')",
         wonderment: "url(./assets/wonderment.png)",
@@ -37,11 +43,14 @@ export default {
       }
     },
     screens: {
-      xs: "480px",
-      sm: "768px",
-      md: "900px",
-      lg: "1300px",
-   
+      xxxs: "350px",
+      xxs: "450px",
+      xs: "600px",
+      sm: "750px",
+      md: "1000px",
+      lg: "1400px",
+      xl: "1800px",
+      xxl: "2000px",
     }
   },
   plugins: [],

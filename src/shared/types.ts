@@ -1,3 +1,5 @@
+
+
 export enum SelectedPage { 
     Home = "home",
     Offerings ="offerings",
@@ -6,7 +8,7 @@ export enum SelectedPage {
 }
 
 export enum QueryWidth {
-    MinWidth = "(min-width:900px)",
+    MinWidth = "(min-width:1000px)",
 }
 
 export interface OfferingType{ 
@@ -15,9 +17,9 @@ export interface OfferingType{
     description: string;
 }
 
-export interface ClassType { 
+export interface ClassType {
     name: string;
+    age: string;
     image: string;
     description?: string;
-    afterbg?: string;
 }
