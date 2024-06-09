@@ -1,10 +1,10 @@
 
-
 export enum SelectedPage { 
     Home = "home",
     Offerings ="offerings",
     Classes = "classes",
     Enroll = "enroll",
+    Location = "location",
 }
 
 export enum QueryWidth {
@@ -22,4 +22,10 @@ export interface ClassType {
     age: string;
     image: string;
     description?: string;
+    gif?: string;
+}
+
+export interface FooterType { 
+    title: string;
+    href: string;
 }

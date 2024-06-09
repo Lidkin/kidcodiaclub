@@ -14,82 +14,85 @@ type Props = {
 const Home = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MinWidth);
 
-  return (
-      <section
-          id="home"
-          className='gap-16 bg-gray-20 pt-10 md:h-full'
-      >
+    return (
+        <section
+            id="home"
+            className='gap-16 bg-gray-20 pt-10 md:h-full'
+        >
             <motion.div
-              className="w-5/6 items-center justify-center md:flex md:h-5/6 mx-auto"
-              onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
+                className="w-5/6 items-center justify-center md:flex md:h-5/6 mx-auto"
+                onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
             >
-              {/* main header */}
-              <div className='z-10 mt-32 md:basis-3/5'>
-                  {/* headings */}
-                  <motion.div
-                      className='md:-mt-20'
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.5 }}
-                      transition={{ duration: 1 }}
-                      variants={{
-                          hidden: { opacity: 0, x: -50 },
-                          visible: {opacity: 1, x: 0 }
-                      }}
-                  > 
-                      <div className='relative'>
-                          <div className='before:absolute before:-top-[150px] before:-left-20 before:z-[-1] md:before:content-kidcodiatext'>
+                {/* main header */}
+                <div className='z-10 mt-32 md:basis-3/5'>
+                    {/* headings */}
+                    <motion.div
+                        className='md:-mt-20'
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 1 }}
+                        variants={{
+                            hidden: { opacity: 0, x: -50 },
+                            visible: { opacity: 1, x: 0 }
+                        }}
+                    >
+                        <div className='relative'>
+                            <div className='before:absolute before:-top-[150px] before:-left-20 before:z-[-1] md:before:content-kidcodiatext'>
                                 <img alt="home-page-text" src={HomePageText} />
                             </div>
-                      </div>
-                      <p className="mt-8 text-sm md:text-start">
-                          Are you looking for a fun and educational afterschool activity for your child?
-                          Kidcodia is the perfect place for young minds aged 8-15 to dive into the world of programming and technology!
-                      </p>
-                  </motion.div>
-                  {/* actions */}
-                  <motion.div
-                      className='mt-8 flex items-center gap-8'
+                        </div>
+                        <p className="mt-8 text-sm md:text-start">
+                            Are you looking for a fun and educational after-school activity for your child?
+                            <br />Do you want them to develop <span className='text-primary-100 font-montserrat text-md'>logic</span> and problem-solving skills while <span className='text-primary-500 font-montserrat text-md'>thinking critically</span> and <span className='text-secondary-50 font-montserrat text-md'>creatively</span>?
+                            <br /> Kidcodia is the perfect place for young minds aged 7-16 to dive into the world of programming and technology!</p>
+                    </motion.div>
+                    {/* actions */}
+                    <motion.div
+                        className='mt-8 flex items-center gap-8'
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ delay: 0.5, duration: 1 }}
                         variants={{
                             hidden: { opacity: 0, x: -50 },
-                            visible: {opacity: 1, x: 0 }
+                            visible: { opacity: 1, x: 0 }
                         }}
                     >
-                      <ActionButton setSelectedPage={setSelectedPage}>
-                          Enroll
-                      </ActionButton>
-                  </motion.div>
-              </div>
+                        <ActionButton setSelectedPage={setSelectedPage}>
+                            Enroll
+                        </ActionButton>
+                    </motion.div>
+                </div>
 
-              {/* image */}
-              <div className='flex basis-3/5 justify-center
+                {/* image */}
+                <div className='flex basis-3/5 justify-center
                     md:ml-40 md:mt-16 md:justify-items-end'>
-                  <img alt="home-page-graphic" src={HomePageGraphic} />
-              </div>
-              
+                    <img alt="home-page-graphic" src={HomePageGraphic} />
+                </div>
+
             </motion.div>
 
-          {/* externals */}
-          {isAboveMediumScreens && (
-            <div className='h-[150px] w-full bg-primary-100 py-10'>
-                  <div className='mx-auto w-5/6'>
-                      <div className='flex w-3/5 items-center gap-8'>
-                          <a href='https://developers.institute/'>
-                              <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
-                          </a>
-                          <a href='https://scratch.mit.edu/'>
-                              <img className='w-full max-w-24 h-20' src={ScratchLogo} alt="externals-scratch" />
-                          </a>
+            {/* externals */}
+            {isAboveMediumScreens && (
+                <div className='h-fit w-full bg-primary-100 py-8 flex '>
+                    <div className='mx-auto w-5/6'>
+                        <div className='flex w-full items-center justify-between gap-8'>
+                            <div>
+                                <p className='font-montserrat mb-2 font-semibold text-md'>supported by</p>
+                                <a href='https://developers.institute/'>
+                                    <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
+                                </a>
+                            </div>
+                            <a href='https://scratch.mit.edu/'>
+                                <img className='w-full max-w-24 h-20' src={ScratchLogo} alt="externals-scratch" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-)}
-          </section>
-  )
+            )}
+        </section>
+    )
 }
 
 export default Home

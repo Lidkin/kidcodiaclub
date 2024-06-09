@@ -9,6 +9,7 @@ export default {
       fontSize: {
         dxs: "0.6rem",
         pxs: "0.7rem",
+        md: "1.1rem",
       },
       colors: {
         "gray-20": "#F9FCFD",

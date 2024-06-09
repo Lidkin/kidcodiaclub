@@ -6,6 +6,7 @@ import { SelectedPage } from '@/shared/types';
 import Classes from "@/scenes/ourclasses";
 import Enroll from "@/scenes/enroll";
 import Footer from "@/scenes/footer";
+import Address from "@/scenes/location";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
@@ -38,6 +39,7 @@ function App() {
       <Home setSelectedPage={setSelectedPage} />
       {/* <Offerings setSelectedPage={setSelectedPage} /> */}
       <Classes setSelectedPage={setSelectedPage} />
+      <Address setSelectedPage={setSelectedPage}></Address>
       <Enroll setSelectedPage={setSelectedPage} />
       <Footer />
     </div>
