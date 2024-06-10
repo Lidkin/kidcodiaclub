@@ -79,7 +79,7 @@ const Home = ({ setSelectedPage }: Props) => {
                     <div className='mx-auto w-5/6'>
                         <div className='flex w-full items-center justify-between gap-8'>
                             <div>
-                                <p className='font-montserrat mb-2 font-semibold text-md'>supported by</p>
+                                <p className='font-montserrat mb-2 font-semibold text-md'>with support of</p>
                                 <a href='https://developers.institute/'>
                                     <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
                                 </a>

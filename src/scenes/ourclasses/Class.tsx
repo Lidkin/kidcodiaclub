@@ -20,22 +20,22 @@ const Class = ({ name, age, description, image, gif, mediumScreen, setSelectedPa
     opacity-0 transition duration-500 hover:opacity-90`;
 
   return (
-    <div className={mediumScreen ? 'relative' :
+    <div className={mediumScreen ? 'relative h-auto' :
       'relative mx-8 my-2 w-fit h-fit'}>
       <p className='text-2xl bg-primary-100 rounded-t-lg text-center py-2 text-white'>{name}</p>
-      <div className={`${overlayStyles} h-[_67vw] md:h-[_32vw] lg:h-[_35vw] flex justify-between items-center rounded-b-lg`}>
-        <div className='h-fit flex text-center text-white xxxs:text-pxs xs:text-base flex-col items-center justify-between whitespace-normal py-2'>
-          <p className="md:text-xl font-bold">{age}</p>
-          <div className="flex justify-between flex-col h-full my-[_1vw]">
-            <p className='text-dxs xs:text-sm mt-2'>{description}</p>
+      <div className={`${overlayStyles} h-[_30vw] flex justify-between items-center rounded-b-lg`}>
+        <div className='h-fit flex text-center text-white xxxs:text-pxs xs:text-base flex-col items-center justify-between whitespace-normal py-1'>
+          <p className="md:text-md font-bold">{age}</p>
+          <div className="flex justify-between flex-col h-fit my-[_1vw]">
+            <p className='text-dxs xs:text-xs mt-2'>{description}</p>
             <p className="mt-2">1 hour per session</p>
-            <p className="mt-2">Cost 80 NIS per lesson</p>
-            <p className="mt-2">Maximum 6 kids in a group</p>
+            <p className="mt-2">80 NIS per session</p>
+            <p className="mt-2">Up to 6 kids in a group</p>
           </div>
           <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>Enroll</ActionButton>
         </div>
       </div>
-      <img className="z-1" src={image} alt={`${name}-image`} />
+      <img className="z-1 xxxs:px-40 md:p-8 " src={image} alt={`${name}-image`} />
       {name === 'JavaScript' ? <img className={`${imgAbs} w-[_20vw] md:w-[_10vw] rounded-xl`} src={gif} alt={`${name}-gif`} /> :
         name === 'Logic Lab' ? <img className={`${imgAbs} w-[_20vw] md:w-[_10vw] rounded-xl`} src={gif} alt={`${name}-gig`} /> : <></>}
     </div>

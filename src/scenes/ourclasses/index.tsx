@@ -81,23 +81,26 @@ const Classes = ({ setSelectedPage }: Props) => {
                 >
                     <Htext> CLASSES </Htext>
                 </motion.div>
-
-                <div className={isAboveMediumScreens ?
-                    'm-10 grid grid-cols-2 gap-12' :
-                    'flex flex-col'}
-                >
-                    {classes.map((item: ClassType, index) => (
-                        <Class
-                            key={`{${item.name}-${index}}`}
-                            name={item.name}
-                            age={item.age}
-                            description={item.description}
-                            image={item.image}
-                            gif={item.gif}
-                            mediumScreen={isAboveMediumScreens}
-                            setSelectedPage={setSelectedPage}
-                        />
-                    ))}
+                <div className='flex justify-center items-center'>
+                    <div className={isAboveMediumScreens ?
+                        'm-10 grid grid-cols-2 gap-5 w-5/6' :
+                        'flex flex-col'}
+                    >
+                        {classes.map((item: ClassType, index) => (
+                            <div className='basis-1/2'>
+                                <Class
+                                    key={`{${item.name}-${index}}`}
+                                    name={item.name}
+                                    age={item.age}
+                                    description={item.description}
+                                    image={item.image}
+                                    gif={item.gif}
+                                    mediumScreen={isAboveMediumScreens}
+                                    setSelectedPage={setSelectedPage}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </motion.div>
         </section>
