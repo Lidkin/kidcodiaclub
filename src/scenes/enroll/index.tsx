@@ -23,12 +23,14 @@ const Enroll = ({ setSelectedPage }: Props) => {
     const checkboxRefs = useRef<(HTMLInputElement | null)[]>([]);
 
     useEffect(() => {
+        console.log(selectedDays)
         validateMin();
     }, [selectedDays, selectedRadioDays]);
 
     const validateMin = () => {
         console.log(selectedDays)
-        const minDays = selectedRadioDays; // assuming this is your minimum required days
+        const minDays = selectedRadioDays;
+        console.log(minDays, selectedDays.length)
         checkboxRefs.current.forEach((ref) => {
             if (ref) {
                 if (selectedRadioDays && selectedDays.length < minDays) {
@@ -71,14 +73,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
             } else {
                 setSelectedDays([...selectedDays, day]); // Check any box
             }
-        }        
-        checkboxRefs.current.forEach((ref) => {
-            if (ref) {
-                if (selectedRadioDays && selectedDays.length < selectedRadioDays) {
-                    ref.setCustomValidity(`Please select at least ${selectedRadioDays} days.`);
-                }
-            }
-        });
+        }
     };
 
 
@@ -220,24 +215,28 @@ const Enroll = ({ setSelectedPage }: Props) => {
                             </div>
 
                             {/* range of time */}
-                            {/* <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col items-center'>
+                            <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col items-center'>
                                 <label className='text-white mr-2 w-2/5'>{"times slots".toUpperCase()}</label>
-                                <div className='w-5/6 flex items-center my-2 text-gray-250 justify-between'>
-                                    {timesSlots.map((slot, index) => (
-                                        <div key={index} className=' flex flex-col items-center'>
-                                            <label htmlFor="startTime" className='mx-2'>{slot}</label>
-                                            <input type="radio"
-                                                name="time"
-                                                value={slot}
-                                                required
-                                                checked={selectedRadioTime === slot}
-                                                onChange={handleRadioTimeChange}
-                                                className='h-4 w-4 mr-3'
-                                            />
+                                {selectedDays.map((day, index) => (
+                                    <>
+                                        <p key={index}>{day}</p>
+                                        <div className='w-5/6 flex items-center my-2 text-gray-250 justify-between'>
+                                            {timesSlots.map((slot, index) => (
+                                                <div key={index} className=' flex flex-col items-center'>
+                                                    <label htmlFor="startTime" className='mx-2'>{slot}</label>
+                                                    <input type="radio"
+                                                        name={`${day}_time`}
+                                                        value={slot}
+                                                        required
+                                                        onChange={handleRadioTimeChange}
+                                                        className='h-4 w-4 mr-3'
+                                                    />
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
-                            </div> */}
+                                    </>
+                                ))}
+                            </div>
 
                             {/* questions: write for user request: write for each selected day timeslot in diapason 14:00 - 19:00   */}
                             <textarea
