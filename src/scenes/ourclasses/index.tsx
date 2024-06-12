@@ -9,7 +9,7 @@ import Class from './Class';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import logicGif from '@/assets/logic.gif';
 import javascriptGif from '@/assets/javascript.gif';
-// import Carousel from './Carousel';
+import './classes.css';
 
 const classes: Array<ClassType> = [
     {
@@ -60,15 +60,15 @@ const Classes = ({ setSelectedPage }: Props) => {
     return (
         <section
             id="classes"
-            // className='w-full md:bg-binarycode md:bg-center md:bg-contain px-24 pt-32'
-            className="mx-auto min-h-full w-5/6 xxxs:pt-24 md:pt-32 portrait:pt-28
-             md:bg-binarycode md:bg-center md:bg-[_120%] lg:bg-[_110%] xl:bg-contain md:bg-no-repeat"
+            // className="mx-auto min-h-full w-5/6 xxxs:pt-24 md:pt-32 portrait:pt-28
+            //  md:bg-binarycode md:bg-center md:bg-[_120%] lg:bg-[_110%] xl:bg-contain md:bg-no-repeat"
+
+            className="mx-auto min-h-full w-5/6 md:bg-binarycode md:bg-center md:bg-[_120%] lg:bg-[_110%] xl:bg-contain md:bg-no-repeat"
         >
             <motion.div
                 onViewportEnter={() => setSelectedPage(SelectedPage.Classes)}
             >
                 <motion.div
-                    // className='mx-auto w-5/6'
                     className="md:my-5 md:w-3/5 pb-5"
                     initial="hidden"
                     whileInView="visible"
@@ -87,7 +87,7 @@ const Classes = ({ setSelectedPage }: Props) => {
                         'flex flex-col'}
                     >
                         {classes.map((item: ClassType, index) => (
-                            <div className='basis-1/2'>
+                            <div key={index} className='class basis-1/2'>
                                 <Class
                                     key={`{${item.name}-${index}}`}
                                     name={item.name}

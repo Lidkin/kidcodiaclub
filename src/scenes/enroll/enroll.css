@@ -1,0 +1,104 @@
+
+/*.enroll {
+    border: green 1px solid;
+}
+
+.kidage{
+    border: blue 1px solid;
+}
+
+.weekday{
+    border: blueviolet 1px solid;
+}
+
+form {
+    border: 1px red solid;
+}
+
+.days {
+    border: 1px violet solid;
+}
+
+.time{
+    border: 1px solid green;
+}
+
+.timeslot {
+    border: 1px rgb(182, 102, 6) solid;
+
+}
+
+*/
+
+@media (300px < width <=370px) and (orientation: portrait) {
+    .kids{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .kids input{
+        width: 2.6rem;
+    }
+        .kidage{
+            width: 100%;
+        }
+    .days{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .week{
+        flex-direction: column;
+    }
+
+    .weekday{
+        width: 100%;
+    }
+    .time{
+        width: 100%;
+    }
+    .timeslot{
+        width: 22%;
+        font-size: 0.8rem;
+        padding: 4px 0;
+        border-radius: 10px; 
+        background-color: hsl(189, 93%, 72%);
+    }
+    .image{
+        margin-top: 10px;
+    }
+
+}
+
+@media (500px < width <=750px) and (orientation: landscape) {
+    .kids {
+        width: 100%;
+    }
+
+    .kids input {
+        width: 2.6rem;
+    }
+.kidage{
+    width: 45%;
+}
+    .days{
+        width: 30%;
+    }
+
+    .weekday{
+        width: 31%;
+    }
+
+        .time {
+            width: 100%;
+        }
+    
+        .timeslot {
+            width: 24%;
+            font-size: 0.8rem;
+            padding: 4px 0;
+            border-radius: 10px;
+            background-color: hsl(189, 93%, 72%);
+        }
+}

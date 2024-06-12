@@ -17,11 +17,12 @@ type Props = {
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const flexBetween = "flex items-center justify-between";
+  console.log(QueryWidth.MinWidth)
   const isAboveMediumScreens = useMediaQuery(QueryWidth.MinWidth);
   const navbarBackground = isTopOfPage ? "" : "bg-gray-20 z-50";
 
   return <nav>
-    <div className={`${navbarBackground} ${flexBetween} fixed top-0 w-full py-6`}>
+    <div id="navbar" className={`${navbarBackground} ${flexBetween} fixed top-0 w-full py-6`}>
       <div className={`${flexBetween} gap-x-24 mx-auto w-5/6`}>
         <div className={`${flexBetween} w-full gap-16`}>
           {isAboveMediumScreens ?
@@ -67,7 +68,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
             <XMarkIcon className="h-6 w-6 text-gray-400" />
           </button>
         </div>
-        <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+        <div className="links ml-[33%] flex flex-col gap-10 text-2xl">
           <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
           <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
           <Link page="Location" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />

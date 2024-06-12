@@ -32,6 +32,8 @@ colors {
     --primary-100: hsl(189,93%,45%);
     --primary-300: hsl(189, 93%, 85%);
     --primary-500: hsl(189, 93, 35%);
+    --secondary-10: hsl(180, 0%, 100%);
+    --secondary-50: #ff9d00;
     --secondary-400: hsl(180, 35%, 45%);
     --secondary-500: hsl(180, 35%, 78%);
 }
@@ -49,4 +51,204 @@ colors {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+}
+
+
+h1, #navbar {
+    /* border: 1px red solid; */
+}
+
+#classes, #location, #enroll {
+    /* padding-top: 6rem; */
+    padding-top: 100px;
+}
+
+#home {
+    padding-top: 0;
+}
+
+.footer {
+    margin-top: 10px;
+}
+
+
+
+/* min-width 320px */
+@media (300px < width <= 350px){
+    #classes,
+        #location {
+            padding-top: 50px;
+        }
+       #enroll{
+        padding-top: 30px;
+       } 
+    .footer{
+        padding-top: 1px;
+    }
+    .imglinks{
+        position: relative;
+        left: -5%;
+        font-size: 0.5rem;
+        width: 110%;
+        justify-content: space-between;
+    }
+    .imglinks div{
+        margin-right: 5vw;
+       /* width: 18%; */
+    }
+}
+
+/* min-width 351px */
+@media (350px < width <= 390px) {
+    #classes,
+        #location {
+            padding-top: 50px;
+        }
+    
+    #enroll {
+        padding-top: 30px;
+    }
+}
+
+/* min-width 391px */
+@media (390px < width <= 450px) { 
+    #classes,
+        #location {
+            padding-top: 50px;
+        }
+    
+        #enroll {
+            padding-top: 30px;
+        }
+}
+
+/* portrait */
+/* min-width 301px */
+@media (300px < width <=350px) and (orientation: portrait) {
+    .enroll {
+        padding-top: 10px;
+    }
+}
+
+/* min-width 351px */
+@media (350px < width <= 415px) and (orientation: portrait) {}
+
+/* min-width 416px */
+@media (415px < width <= 450px) and (orientation: portrait) { 
+    /* #enroll {
+            padding-top: 2.5rem;
+        } */
+}
+
+@media (390px < width <= 410px) and (orientation: portrait) {
+    /* #enroll {
+        padding-top: 2rem;
+    } */
+}
+
+/* min-width 451px */
+@media (450px < width <= 600px) and (orientation: portrait) {
+        
+}
+
+/* min-width 601px */
+@media (600px < width <= 750px) and (orientation: portrait) {
+        
+}
+
+
+/* min-width 751px */
+@media (750px < width <=950px) and (orientation: portrait) {
+    
+}
+
+
+/* min-width 951px */
+@media (950px < width <= 1200px) and (orientation: portrait) {
+        
+}
+
+
+/* min-width 1201px */
+@media (1200px < width <= 1400px) and (orientation: portrait) {
+        
+}
+
+
+/* min-width 1401px */
+@media (1400px < width <= 1800px) and (orientation: portrait) {
+        
+}
+
+
+/* min-width 1801px */
+@media (1800px < width <= 2000px) and (orientation: portrait) {
+        
+}
+
+/* min-width 2001px */
+@media (width > 2000px) and (orientation: portrait) {
+        
+}
+
+
+/* landscape */
+
+/* min-width 501px */
+/* classes done */
+@media (500px < width <=750px) and (orientation: landscape) {
+    #classes,
+        #location,
+        #enroll {
+            padding-top: 50px;
+        }
+    #classes{
+        padding: 0 25px;
+    }    
+    .overlay{
+        height: 80%;
+    }    
+    .images{
+        padding: 30px;        
+    } 
+    .description{
+        font-size: 0.8rem;
+    }
+    .enroll {
+        padding-top: 5px;
+    }
+    .links {
+        font-size: 1rem;
+        gap: 1rem;
+    }
+}
+
+/* min-width 751px */
+@media (750px < width <=950px) and (orientation: landscape) {
+    
+}
+
+/* min-width 951px */
+@media (950px < width <=1200px) and (orientation: landscape) {
+    
+}
+
+/* min-width 1201px */
+@media (1200px < width <=1400px) and (orientation: landscape) {
+    
+}
+
+/* min-width 1401px */
+@media (1400px < width <=1800px) and (orientation: landscape) {
+    
+}
+
+/* min-width 1801px */
+@media (1800px < width <=2000px) and (orientation: landscape) {
+    
+}
+
+/* min-width 2001px */
+@media (width > 2000px) and (orientation: landscape) {
+
 }

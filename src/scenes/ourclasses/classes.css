@@ -1,0 +1,149 @@
+/*
+.description{
+    text-wrap: pretty;
+}
+
+.text{
+    border: red 1px solid;
+}
+
+.overlay {
+    border: green 1px solid;
+}
+
+.overblock{
+    border: blue 1px solid;
+}
+
+.class{
+    border: rgb(153, 19, 131) 1px solid;
+} 
+
+.class img {
+    border: gray 1px solid;
+}
+*/
+
+@media (300px < width <=370px) and (orientation: portrait) {
+    .description{
+        font-size: 0.6rem;
+    }
+
+    .overlay {
+        padding: 0 1px;
+        height: 90%;
+    }
+
+    .paragraph {
+        font-size: 0.7rem;
+    }
+
+    .overblock>p {
+        font-size: 0.8rem;
+    }
+
+    .text {
+        height: 75%;
+        padding: 5px 0;
+    }
+
+    .class {
+        margin: 10px 0;
+        padding: 5px 0;
+    }
+
+    .images {
+        padding: 10px 0;
+    }
+#javascript,
+#logic {
+    width: 80px;
+    bottom: 35px;
+    right: 35px;
+}
+
+}
+
+@media (500px < width <=750px) and (orientation: landscape) {
+    #javascript,
+        #logic {
+            width: 90px;
+            bottom: 60px;
+            right: 70px;
+        }
+}
+
+@media (width <=350px) and (orientation: landscape) {}
+
+@media (350px < width <=450px) {}
+
+@media (370px < width <=450px) and (orientation: portrait) {
+    .description {
+        font-size: 0.8rem;
+    }
+
+    .overlay {
+        padding: 0 10px;
+    }
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
+    .overblock > p {
+        font-size: 1.1rem;
+    }
+
+    .class {        
+        margin: 5px 0;
+    }
+
+    .text{
+        padding: 10px 0 20px;
+    }
+}
+
+@media (350px < width <=450px) and (orientation: landscape) {}
+
+@media (450px < width <=600px) {}
+
+@media (450px < width <=600px) and (orientation: portrait) {}
+
+@media (450px < width <=600px) and (orientation: landscape) {}
+
+@media (600px < width <=750px) {}
+
+@media (600px < width <=750px) and (orientation: portrait) {}
+
+@media (600px < width <=750px) and (orientation: landscape) {}
+
+@media (1000px < width <=1200px) {
+}
+
+@media (1000px < width <=1200px) and (orientation: portrait) {}
+
+@media (1000px < width <=1200px) and (orientation: landscape) {}
+
+@media (1200px < width <=1400px) {}
+
+@media (1200px < width <=1400px) and (orientation: portrait) {}
+
+@media (1200px < width <=1400px) and (orientation: landscape) {}
+
+@media (1400px < width <=1800px) {}
+
+@media (1400px < width <=1800px) and (orientation: portrait) {}
+
+@media (1400px < width <=1800px) and (orientation: landscape) {}
+
+@media (1800px < width <=2000px) {}
+
+@media (1800px < width <=2000px) and (orientation: portrait) {}
+
+@media (1800px < width <=2000px) and (orientation: landscape) {}
+
+@media (width > 2000px) {}
+
+@media (width > 2000px) and (orientation: portrait) {}
+
+@media (width > 2000px) and (orientation: landscape) {}

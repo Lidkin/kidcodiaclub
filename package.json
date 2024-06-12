@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/app": "^0.10.5",
+    "@firebase/storage": "^0.12.5",
     "@heroicons/react": "^2.1.3",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",

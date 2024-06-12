@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@firebase/app':
+        specifier: ^0.10.5
+        version: 0.10.5
+      '@firebase/storage':
+        specifier: ^0.12.5
+        version: 0.12.5(@firebase/app@0.10.5)
       '@heroicons/react':
         specifier: ^2.1.3
         version: 2.1.3(react@18.3.1)
