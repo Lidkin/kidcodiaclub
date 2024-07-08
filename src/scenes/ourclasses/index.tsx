@@ -3,6 +3,7 @@ import python from "@/assets/python-example.png";
 import scratch from "@/assets/scratch-example.png";
 import javascript from "@/assets/js-example.png";
 import logic from "@/assets/logic-example.png";
+import kidcodia from '@/assets/kidcodia-text-location.png';
 import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
 import Class from './Class';
@@ -24,7 +25,6 @@ const classes: Array<ClassType> = [
         name: "Python",
         age: "Сhildren's age 10-14",
         description: `This program will introduce children to basic programming concepts using Python.
-         Interactive and hands-on sessions allow students to experiment independently.
           Over time, students will develop a strong foundation in coding and logical thinking,
            fostering their growth in computational skills and problem-solving abilities.`,
         image: python
@@ -55,7 +55,7 @@ type Props = {
 }
 
 const Classes = ({ setSelectedPage }: Props) => {
-    const isAboveMediumScreens = useMediaQuery(QueryWidth.MinWidth);
+    const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
 
     return (
         <section
@@ -83,11 +83,11 @@ const Classes = ({ setSelectedPage }: Props) => {
                 </motion.div>
                 <div className='flex justify-center items-center'>
                     <div className={isAboveMediumScreens ?
-                        'm-10 grid grid-cols-2 gap-5 w-5/6' :
+                        'parent-class mb-10 mx-10 grid grid-cols-2 w-5/6' :
                         'flex flex-col'}
                     >
                         {classes.map((item: ClassType, index) => (
-                            <div key={index} className='class basis-1/2'>
+                            <div key={index} className='class'>
                                 <Class
                                     key={`{${item.name}-${index}}`}
                                     name={item.name}
@@ -103,6 +103,13 @@ const Classes = ({ setSelectedPage }: Props) => {
                     </div>
                 </div>
             </motion.div>
+            <div className='kidcodia w-5/6 flex'>
+                <div className='mx-auto'>
+                    <div className='flex w-5/6 h-fit absolute -translate-x-[40%] translate-y-[2vw]'>
+                        <img className='w-full max-w-full' src={kidcodia} alt="externals-developers-institute" />
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }

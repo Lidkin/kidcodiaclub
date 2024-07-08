@@ -37,51 +37,54 @@ colors {
     --secondary-400: hsl(180, 35%, 45%);
     --secondary-500: hsl(180, 35%, 78%);
 }
-
 /*
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
+h1, #navbar {
+    border: 1px red solid;
 }
 */
 
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-
-h1, #navbar {
-    /* border: 1px red solid; */
-}
-
-#classes, #location, #enroll {
-    /* padding-top: 6rem; */
+#classes {
     padding-top: 100px;
+    max-width: 100%;
 }
 
-#home {
-    padding-top: 0;
+#location,
+#enroll {
+    padding-top: 115px;
+    max-width: 100%;
 }
 
 .footer {
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 
-
-/* min-width 320px */
-@media (300px < width <= 350px){
-    #classes,
-        #location {
-            padding-top: 50px;
-        }
-       #enroll{
+@media (width <=415px) and (orientation: portrait){
+    #enroll{
         padding-top: 30px;
-       } 
+    }
+}
+
+/* navigation classes home done */
+@media (700px < width <= 950px) and (1100px < height <= 1500px) and (orientation: portrait){
+    .externals {
+        height: fit-content;
+        width: 100%;
+        padding: 3rem 0;
+        display: flex;
+        background-color: hsl(189 93% 45% );
+        visibility: visible;
+        position: absolute;
+        bottom: 0;
+    }
+    #home {
+        padding-top: 5vh;
+    }
+}
+
+/* min-width 301px */
+/* all done */
+@media (300px < width <= 350px){
     .footer{
         padding-top: 1px;
     }
@@ -98,112 +101,104 @@ h1, #navbar {
     }
 }
 
-/* min-width 351px */
-@media (350px < width <= 390px) {
+@media (950px < width <=2000px){
     #classes,
-        #location {
+        #location, #enroll {
             padding-top: 50px;
         }
-    
-    #enroll {
-        padding-top: 30px;
-    }
-}
 
-/* min-width 391px */
-@media (390px < width <= 450px) { 
-    #classes,
-        #location {
-            padding-top: 50px;
-        }
-    
-        #enroll {
-            padding-top: 30px;
-        }
+    .enroll {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
 }
 
 /* portrait */
 /* min-width 301px */
-@media (300px < width <=350px) and (orientation: portrait) {
+/* navigation home done */
+@media (300px < width <=450px) and (orientation: portrait) {
+    #classes,
+    #location, #enroll {
+        padding-top: 50px;
+    }
     .enroll {
         padding-top: 10px;
     }
 }
-
-/* min-width 351px */
-@media (350px < width <= 415px) and (orientation: portrait) {}
-
-/* min-width 416px */
-@media (415px < width <= 450px) and (orientation: portrait) { 
-    /* #enroll {
-            padding-top: 2.5rem;
-        } */
+/* navigation classes home done */
+@media (300px < width <=350px) and
+ (500px < height <=550px) and (orientation: portrait) {
+    .home-image {
+        position: absolute;
+        bottom: 5px;
+        transform: translateX(60px);
+        margin: 0 70px;
+        z-index: 0;
+    }
+    #home{
+        padding-top: 1px;
+    }
 }
 
-@media (390px < width <= 410px) and (orientation: portrait) {
-    /* #enroll {
-        padding-top: 2rem;
-    } */
+/* classes home done */
+@media (300px < width <=500px) and
+ (550px <height <=700px) and (orientation: portrait){
+        #home {
+                padding-top: 1px;
+            }
+        .home-image{
+            padding: 20px 40px;
+        }   
 }
 
-/* min-width 451px */
-@media (450px < width <= 600px) and (orientation: portrait) {
-        
+/* home done */
+@media (300px < width <=500px) and
+ (700px < height <=800px) and (orientation: portrait) {
+    #home {
+        padding-top: 1px;
+    }
 }
 
-/* min-width 601px */
-@media (600px < width <= 750px) and (orientation: portrait) {
-        
+/*home done */
+@media (300px < width <=500px) and
+ (800px < height <=1000px) and (orientation: portrait) {
+    #home {
+        padding-top: 5vh;
+    }
+    .home-image{
+        position: absolute;
+        bottom: 6vh;
+        z-index: 1;
+        padding-right: 6vw;
+    }
 }
 
-
-/* min-width 751px */
-@media (750px < width <=950px) and (orientation: portrait) {
-    
+/* home done */
+@media (500px < width <=750px) and (850px < height <=1000px) and (orientation: portrait) {
+    #home {
+        padding-top: 5vh;
+    }
 }
-
-
-/* min-width 951px */
-@media (950px < width <= 1200px) and (orientation: portrait) {
-        
+/* home done */
+@media (750px < width <= 950px) and (1100px >= height) and (orientation: portrait) {
+    #home {
+        padding-top: 5vh;
+    }
 }
-
-
-/* min-width 1201px */
-@media (1200px < width <= 1400px) and (orientation: portrait) {
-        
-}
-
-
-/* min-width 1401px */
-@media (1400px < width <= 1800px) and (orientation: portrait) {
-        
-}
-
-
-/* min-width 1801px */
-@media (1800px < width <= 2000px) and (orientation: portrait) {
-        
-}
-
-/* min-width 2001px */
-@media (width > 2000px) and (orientation: portrait) {
-        
-}
-
 
 /* landscape */
 
 /* min-width 501px */
 /* classes done */
 @media (500px < width <=750px) and (orientation: landscape) {
-    #classes,
-        #location,
-        #enroll {
+        #location, 
+        #enroll 
+        {
             padding-top: 50px;
         }
     #classes{
-        padding: 0 25px;
+        padding-top: 50px;
+        padding: 50px 25px 0 25px;
     }    
     .overlay{
         height: 80%;
@@ -223,32 +218,30 @@ h1, #navbar {
     }
 }
 
-/* min-width 751px */
-@media (750px < width <=950px) and (orientation: landscape) {
-    
+@media ( 950px <= width <= 1200px) and (height < 700px) and (orientation: landscape){
+    .md-externals{
+        visibility: hidden;
+        height: 0;
+        width: 0;
+    }
+    #home{
+        padding-top: 150px;
+    }
+    .home-image{
+        margin-left: 20px;
+    }
 }
 
-/* min-width 951px */
-@media (950px < width <=1200px) and (orientation: landscape) {
-    
+@media (500px<= width <950px) and (height < 600px) and (orientation: landscape) {
+    #home{
+        height:fit-content;
+        padding-top: 0;
+    }
 }
 
-/* min-width 1201px */
-@media (1200px < width <=1400px) and (orientation: landscape) {
-    
-}
-
-/* min-width 1401px */
-@media (1400px < width <=1800px) and (orientation: landscape) {
-    
-}
-
-/* min-width 1801px */
-@media (1800px < width <=2000px) and (orientation: landscape) {
-    
-}
-
-/* min-width 2001px */
-@media (width > 2000px) and (orientation: landscape) {
-
+@media (500px<= width <950px) and (600px <= height < 950px) and (orientation: landscape) {
+    #home{
+        height: fit-content;
+        padding-top: 0;
+    }
 }

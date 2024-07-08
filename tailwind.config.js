@@ -47,7 +47,8 @@ export default {
         smile: "url('./assets/smile.png')",
         tongue: "url('./assets/tongue.png')",
         wonderment: "url(./assets/wonderment.png)",
-        enroll: "url('./assets/kidcodia-text.png')"
+        enroll: "url('./assets/kidcodia-bg.png')",
+        enrollmd: "url('./assets/kidcodia-medium.png')"
       }
     },
     screens: {
@@ -57,9 +58,11 @@ export default {
       sm: "750px",
       md: "950px",
       mdl: "1200px",
+      slg: "1000px",
+      mlg: "2000px",
       lg: "1400px",
       xl: "1800px",
-      xxl: "2000px",
+      xxl: "2000px"
     }
   },
   plugins: [],

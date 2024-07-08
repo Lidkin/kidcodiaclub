@@ -9,7 +9,7 @@ type Props = {
 }
 
 const ActionButton = ({ children, setSelectedPage, selectedPage }: Props) => {
-    const bgColor = selectedPage === "classes" ? `bg-secondary-50 text-gray-100 font-bold` : `bg-primary-500 text-white`;
+    const bgColor = selectedPage === "classes" ? `bg-secondary-50 text-gray-100 font-bold z-10` : `bg-primary-500 text-white z-10`;
 
   return (
       <AnchorLink

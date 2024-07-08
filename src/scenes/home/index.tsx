@@ -12,12 +12,12 @@ type Props = {
 }
 
 const Home = ({ setSelectedPage }: Props) => {
-    const isAboveMediumScreens = useMediaQuery(QueryWidth.MinWidth);
-
+    const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
+    
     return (
         <section
             id="home"
-            className='gap-16 bg-gray-20 pt-10 md:h-full'
+            className={`gap-16 bg-gray-20 pt-24 w-full h-full`}
         >
             <motion.div
                 className="w-5/6 items-center justify-center md:flex md:h-5/6 mx-auto"
@@ -66,16 +66,27 @@ const Home = ({ setSelectedPage }: Props) => {
                 </div>
 
                 {/* image */}
-                <div className='flex basis-3/5 justify-center
-                    md:ml-40 md:mt-16 md:justify-items-end'>
+                <div className='home-image flex basis-3/5 justify-center
+                    slg:ml-20 mdl:ml-40 md:mt-16 md:justify-items-end md:pt-4'>
                     <img alt="home-page-graphic" src={HomePageGraphic} />
                 </div>
 
             </motion.div>
+            
+                <div className='externals hidden w-0 h-0'>
+                    <div className='mx-auto w-11/12'>
+                        <div className='flex w-full items-center justify-between gap-8'>
+                            <p className='font-montserrat mb-2 font-semibold text-md'>with support of</p>
+                            <a href='https://developers.institute/'>
+                                <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
             {/* externals */}
             {isAboveMediumScreens && (
-                <div className='h-fit w-full bg-primary-100 py-8 flex '>
+                <div className='md-externals h-fit w-full bg-primary-100 py-8 flex absolute bottom-0 '>
                     <div className='mx-auto w-5/6'>
                         <div className='flex w-full items-center justify-between gap-8'>
                             <div>

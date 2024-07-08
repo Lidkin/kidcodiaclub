@@ -1,5 +1,5 @@
-
-/*.enroll {
+/*
+.enroll {
     border: green 1px solid;
 }
 
@@ -23,82 +23,349 @@ form {
     border: 1px solid green;
 }
 
+
 .timeslot {
     border: 1px rgb(182, 102, 6) solid;
 
 }
 
-*/
+/* ==================== */
 
-@media (300px < width <=370px) and (orientation: portrait) {
+.image {
+    margin-top: 10px;
+}
+
+.time, .days, .weekday, .kidage, .kid {
+    border-radius: 10px;
+    background-color: hsl(189, 93%, 72%);
+}
+
+.time,
+.days,
+.weekday,
+.kidage .kidparent {
+padding: 5px 10px;
+}
+
+.timeslot {
+    width: 23%;
+    line-height: 1.2rem;
+    font-size: 1rem;
+    padding: 4px 0;
+}
+
+.timeslot label {
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.timeslot input {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.time{
+    width: 100%;
+}
+
+.kids {
+    width: 200px;
+}
+.kidage {
+    width: 140px;
+    margin-bottom: 10px;
+}
+/*
+.kidparent:nth-child(3){
+    margin-bottom: -10px;
+}
+.kidparent:last-child {
+    margin-bottom: -10px;
+}
+*/
+.kids input {
+    width: 2.6rem;
+}
+
+.days {
+    width: 120px;
+}
+.weekday{
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.week:last-child {
+    margin-bottom: -10px;
+}
+
+.weekday input {
+    width: 1rem;
+    height: 1rem;
+}
+@media (300px < width <=390px){
+    .kidage{
+        width: 100%;
+    }
+}
+
+@media (300px < width <=390px) and (orientation: portrait) {
     .kids{
         width: 100%;
         justify-content: space-between;
     }
-    .kids input{
-        width: 2.6rem;
-    }
-        .kidage{
-            width: 100%;
-        }
     .days{
+        font-size: 0.9rem;
+        width: 31%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px 0;
+    }
+    .week{
+        flex-direction: column;
+    }
+    .weekday{
+        width: 100%;
+        display: inline-flex;
+        flex-direction: row;
+    }
+}
+@media (390px < width <=500px) and (orientation: portrait) {
+    .days {
         width: 30%;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
-
-    .week{
-        flex-direction: column;
-    }
-
-    .weekday{
-        width: 100%;
-    }
-    .time{
-        width: 100%;
-    }
-    .timeslot{
-        width: 22%;
-        font-size: 0.8rem;
-        padding: 4px 0;
-        border-radius: 10px; 
-        background-color: hsl(189, 93%, 72%);
-    }
-    .image{
-        margin-top: 10px;
-    }
-
 }
 
-@media (500px < width <=750px) and (orientation: landscape) {
+@media (390px < width <=450px) and (orientation: portrait) {
     .kids {
         width: 100%;
     }
-
-    .kids input {
-        width: 2.6rem;
+    .weekday {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: none;
+        padding-bottom: 0;
+    } 
+    .week{
+        background-color: hsl(189, 93%, 72%);
+        border-radius: 10px;
+        margin-bottom: 0;
     }
-.kidage{
-    width: 45%;
+        .week:last-child {
+            padding-bottom: 0;
+            margin-bottom: 5px;
+        }
 }
-    .days{
-        width: 30%;
-    }
 
+@media (450px < width <=580px) and (orientation: portrait) {
     .weekday{
-        width: 31%;
+        width: 110px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+}
 
-        .time {
-            width: 100%;
+@media (500px < width <=750px) {
+    .weekday{
+        width: 100px;
+    }
+}
+
+@media (600px < width <=750px) and (orientation: landscape) {
+        .days {
+            width: 20%;
+            padding: 0 2px;
         }
     
-        .timeslot {
-            width: 24%;
-            font-size: 0.8rem;
-            padding: 4px 0;
-            border-radius: 10px;
-            background-color: hsl(189, 93%, 72%);
+        .weekday {
+            width: 25%;
+            padding: 0 2px;
         }
+    }
+
+@media (950px < width <=2000px) { 
+    .kidage{
+        width: 130px;
+    }
+    .timeslot{
+        width: 90px;
+    }
+    .time{
+        padding: 0 50px;
+        border-radius: 10px;
+    }
+}  
+
+@media (950px < width <= 1000px){
+    .days {
+        width: 130px;
+    }
+
+    .weekday {
+        width: 135px;
+    }
 }
+ 
+@media (width <= 950px) {
+    .kidparent{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+} 
+
+/*
+@media (width > 2000px){
+    .kidparent {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-around;
+        justify-items: center;
+    }
+}
+*/
+
+.kidparent{
+    width: 100%;
+}
+.kid{
+    width: 100%;
+}
+
+.classes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 5px;
+}
+
+.child-classes {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1.25rem;
+}
+
+.kidage {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 1rem 0;
+    width: 30%;
+    padding-right: 10px;
+}
+
+@media (1200px > width >= 650px) {
+.classes{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 5px;
+}
+.child-classes  {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+}
+
+.kidage{
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 1rem 0;
+    width: 30%;
+}
+}
+
+@media (700px > width >= 500px) {
+    .classes {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        gap: 5px;
+    }
+
+    .child-classes {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+    }
+
+    .kidage {
+        flex-direction: column;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        align-items: center;
+        margin: 0;
+        padding: 0.5rem 0;
+        width: 20%;
+    }
+
+    .kidage label {
+        padding-bottom: 3px;
+    }
+}
+
+@media (width < 500px) {
+    .classes {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        justify-items: center;
+        gap: 5px;
+    }
+
+    .child-classes {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+    }
+
+    .kidage {
+        flex-direction: column;
+        font-size:0.8rem;
+        line-height: 1.25rem;
+        align-items: center;
+        margin: 0;
+        padding: 0.5rem 0;
+        width: 20%;
+    }
+
+    .kidage label {
+        padding-bottom: 3px;
+    }
+                .kidage input {
+                    width: 2rem;
+                    padding: 0;
+                    text-align: center;
+                }
+}
+/* md:grid-cols-3 mlg:grid-cols-4 mlg:grid-rows-1 $ {
+    numKids < 3 ? `md: grid-rows-1`: `md:grid-rows-2`
+} */

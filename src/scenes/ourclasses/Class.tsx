@@ -22,7 +22,7 @@ const Class = ({ name, age, description, image, gif, mediumScreen, setSelectedPa
     <div className={mediumScreen ? 'relative h-auto' :
       'relative'}>
       <p className='text-2xl bg-primary-100 rounded-t-lg text-center py-2 text-white'>{name}</p>
-      <div className={`overlay ${overlayStyles} h-[_90%] flex justify-between items-center rounded-b-lg`}>
+      <div className={`overlay ${overlayStyles} flex justify-between items-center rounded-b-lg`}>
         <div className='overblock h-full flex text-center text-white flex-col items-center justify-between whitespace-normal py-2'>
           <p className="font-bold">{age}</p>
           <div className="text flex justify-between flex-col">
@@ -31,7 +31,9 @@ const Class = ({ name, age, description, image, gif, mediumScreen, setSelectedPa
             <p className="paragraph">80 NIS per session</p>
             <p className="paragraph">Up to 6 kids in a group</p>
           </div>
-          <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>Enroll</ActionButton>
+          <div className="button mb-3 xl:mb-5">
+            <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>Enroll</ActionButton>
+          </div>
         </div>
       </div>
       <img className="images z-1" src={image} alt={`${name}-image`} />

@@ -1,8 +1,4 @@
 /*
-.description{
-    text-wrap: pretty;
-}
-
 .text{
     border: red 1px solid;
 }
@@ -22,11 +18,109 @@
 .class img {
     border: gray 1px solid;
 }
-*/
 
-@media (300px < width <=370px) and (orientation: portrait) {
-    .description{
-        font-size: 0.6rem;
+/* ===================== */
+/* /* */
+.overlay {
+    padding: 0 1px;
+    height: 90%;
+}
+
+.overblock {
+    padding: 20px 50px;
+}
+/* ============== */
+#javascript,
+#logic {
+    width: 100px;
+    bottom: 60px;
+    right: 70px;
+}
+
+.images{
+    padding: 10px;
+}
+.class {
+    margin: 10px 0;
+    padding: 5px 50px;
+}
+
+.description {
+    font-size: 1rem;
+    text-wrap: pretty;
+}
+.paragraph {
+    font-size: 1.1rem;
+}
+.overblock>p{
+    font-size: 1.2rem;
+}
+
+.text {
+    height: 75%;
+    padding: 5px 0;
+}
+
+.parent-class{
+    gap: 1.25rem;
+}
+
+/* portrait done */
+
+@media (300px < width <=350px) and (orientation: portrait){
+    .paragraph {
+            font-size: 0.7rem;
+        }
+    
+        .overblock>p {
+            font-size: 0.75rem;
+        }
+    
+        .description {
+            font-size: 0.65rem;
+            padding: 0 5px;
+        }
+    
+        .overblock {
+            padding: 0;
+        }
+    
+        .overlay {
+            padding: 0 1px;
+            height: 90%;
+        }
+    
+        .class {
+            padding: 5px 0;
+        }
+    
+        .images {
+            padding: 10px 0;
+        }
+    
+        #javascript,
+        #logic {
+            width: 80px;
+            bottom: 35px;
+            right: 35px;
+        }
+}
+
+@media (350px < width <=400px) and (orientation: portrait) {
+    .paragraph {
+            font-size: 0.85rem;
+        }
+    
+    .overblock>p {
+        font-size: 0.95rem;
+    }
+    .description {
+        font-size: 0.75rem;
+        padding: 0 5px;
+    }
+
+    .overblock{
+        padding: 0;
     }
 
     .overlay {
@@ -34,36 +128,168 @@
         height: 90%;
     }
 
-    .paragraph {
-        font-size: 0.7rem;
-    }
-
-    .overblock>p {
-        font-size: 0.8rem;
-    }
-
-    .text {
-        height: 75%;
-        padding: 5px 0;
-    }
-
     .class {
-        margin: 10px 0;
         padding: 5px 0;
     }
 
     .images {
         padding: 10px 0;
     }
-#javascript,
-#logic {
-    width: 80px;
-    bottom: 35px;
-    right: 35px;
+    #javascript,
+    #logic {
+        width: 90px;
+        bottom: 45px;
+        right: 45px;
+    }
 }
 
+@media (400px < width <=500px) and (orientation: portrait) {
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .overblock>p {
+        font-size: 1.05rem;
+    }
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .overblock {
+        padding: 0;
+    }
+    .overlay {
+        padding: 0 1px;
+        height: 90%;
+    }
+
+    .class {
+        padding: 5px 0;
+    }
+
+    .images {
+        padding: 10px 0;
+    }
+
+    #javascript,
+    #logic {
+        bottom: 65px;
+        right: 65px;
+    }
 }
 
+@media (500px < width <=600px) and (orientation: portrait) {
+    #javascript,
+        #logic {
+            width: 110px;
+            bottom: 70px;
+            right: 70px;
+        }
+    .class {
+        margin: 5px 0;
+        padding: 10px 25px;
+    }
+    .overblock{
+        padding: 0 10px;
+    }
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
+    .overblock>p {
+        font-size: 1.1rem;
+    }
+    .text{
+        padding: 0;
+    }
+}
+@media (600px < width <=700px) and (orientation: portrait) {
+    .overblock {
+        padding: 0 15px;
+    }
+    .class {
+        padding: 0 25px;
+    }
+}
+@media (700px < width <=800px) and (orientation: portrait) {
+    .overlay{
+        height: 90%;
+    }
+    .overblock {
+        padding: 0 25px;
+    }
+    .class {
+        padding: 0 50px;
+    }
+}
+@media (600px < width <=800px) and (orientation: portrait) {
+    #javascript,
+    #logic {
+        width: 120px;
+        bottom: 75px;
+        right: 85px;
+    }
+}
+
+@media (800px < width <=950px) and (orientation: portrait) {
+    .overlay {
+            height: 90%;
+        }
+
+    .overblock {
+        padding: 20px 50px;
+    }
+    .class {
+        padding: 0 100px;
+    }
+
+    #javascript,
+    #logic {
+        width: 150px;
+        bottom: 75px;
+        right: 85px;
+    }
+}
+
+@media (width <= 950px) and (orientation: portrait) {
+    .kidcodia{
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+@media (width >= 950px) and (orientation: landscape) {
+    .kidcodia {
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+@media (width > 950px) and (orientation: portrait) {
+    .class {
+        padding: 0;
+    }
+    .parent-class{
+        margin-top: 40px;
+        row-gap: 5vh;
+    }
+    .overblock{
+        padding: 0 5px;
+    }
+.images{
+    padding-top: 5vh;
+}
+.kidcodia{
+
+}
+    
+}
+
+/* landscape */
 @media (500px < width <=750px) and (orientation: landscape) {
     #javascript,
         #logic {
@@ -72,78 +298,238 @@
             right: 70px;
         }
 }
+@media (750px <= width < 950px)
+ and (height <= 400px) and (orientation: landscape) {
+    .class{
+        margin: 40px;
+    }
+    .overlay{
+        padding: 0 40px;
+    }
+    .overblock{
+        padding: 0 5px;
+        height: 94vh;
+    } 
+    #javascript,
+    #logic {
+        width: 120px;
+        bottom: 90px;
+        right: 80px;
+    }
+}
 
-@media (width <=350px) and (orientation: landscape) {}
+@media (750px <= width < 950px)
+ and (400px < height <= 500px) and (orientation:landscape){
+    #javascript,
+        #logic {
+            width: 160px;
+            bottom: 90px;
+            right: 80px;
+        }
+}
 
-@media (350px < width <=450px) {}
+/*width > 950px  */
+@media (950px < width <= 1050px) and (height >= 800px) and (orientation:landscape) {
+    .class{
+        padding: 0;
+    }
+    .overlay {
+        height: 30vw;
+    }
+    .overblock {
+        padding: 0 5px;
+    }
+    .description {
+        font-size: 0.75rem;
+    }
+    .paragraph {
+        font-size: 0.85rem;
+    }
+    .overblock>p {
+        font-size: 0.9rem;
+    }
+}
+@media (950px <= width <= 1050px) and (600px < height < 800px) and (orientation:landscape) {
+    .class {
+        padding: 0;
+    }
 
-@media (370px < width <=450px) and (orientation: portrait) {
+    .overlay {
+        height: 30vw;
+    }
+
+    .overblock {
+        padding: 0 10px;
+    }
+
+    .description {
+        font-size: 0.75rem;
+    }
+
+    .paragraph {
+        font-size: 0.85rem;
+    }
+
+    .overblock>p {
+        font-size: 0.9rem;
+    }
+
+    .parent-class {
+        row-gap: 1.05rem;
+    }
+}
+
+@media (1050px <=width <=1250px) and (600px < height < 800px) and (orientation:landscape) {
+    .class {
+        padding: 0px;
+    }
+
+    .overlay {
+        height: 30vw;
+    }
+
+    .overblock {
+        padding: 0 20px;
+    }
+
     .description {
         font-size: 0.8rem;
     }
 
+    .paragraph {
+        font-size: 0.95rem;
+    }
+
+    .overblock>p {
+        font-size: 1.15rem;
+    }
+}
+
+@media (1050px < width <= 1250px) and (height >= 800px) and (orientation:landscape) {
+    .class {
+        padding: 0 20px;
+    }
+
     .overlay {
+        height: 30vw;
+    }
+
+    .overblock {
         padding: 0 10px;
+    }
+
+    .description {
+        font-size: 0.9rem;
     }
 
     .paragraph {
         font-size: 1rem;
     }
 
-    .overblock > p {
+    .overblock>p {
         font-size: 1.1rem;
     }
 
-    .class {        
-        margin: 5px 0;
-    }
-
-    .text{
-        padding: 10px 0 20px;
+    .parent-class {
+        row-gap: 1.5rem;
     }
 }
 
-@media (350px < width <=450px) and (orientation: landscape) {}
+@media (1250px < width <=1400px) and ( 950px > height >= 800px) and (orientation:landscape) {
+    .class {
+        padding: 0 20px;
+    }
 
-@media (450px < width <=600px) {}
+    .overlay {
+        height: 27vw;
+    }
 
-@media (450px < width <=600px) and (orientation: portrait) {}
+    .overblock {
+        padding: 0 10px;
+    }
 
-@media (450px < width <=600px) and (orientation: landscape) {}
+    .description {
+        font-size: 0.9rem;
+    }
 
-@media (600px < width <=750px) {}
+    .paragraph {
+        font-size: 1rem;
+    }
 
-@media (600px < width <=750px) and (orientation: portrait) {}
+    .overblock>p {
+        font-size: 1.1rem;
+    }
 
-@media (600px < width <=750px) and (orientation: landscape) {}
-
-@media (1000px < width <=1200px) {
+    .parent-class {
+        row-gap: 1.5rem;
+    }
 }
 
-@media (1000px < width <=1200px) and (orientation: portrait) {}
+@media (1600px >= width > 1400px) and ( height >= 950px) and (orientation:landscape) {
+    .class {
+        padding: 0 20px;
+    }
 
-@media (1000px < width <=1200px) and (orientation: landscape) {}
+    .overlay {
+        height: 30vw;
+    }
 
-@media (1200px < width <=1400px) {}
+    .overblock {
+        padding: 0 10px;
+    }
+}
+/*
+@media (1200px > width >= 950px)
+ and (height < 700px) and (orientation:landscape) {
+    .overblock {
+        padding: 0 5px;
+    }
 
-@media (1200px < width <=1400px) and (orientation: portrait) {}
+    .overlay {
+        height: 300px;
+    }
 
-@media (1200px < width <=1400px) and (orientation: landscape) {}
+    .description {
+        font-size: 0.75rem;
+    }
 
-@media (1400px < width <=1800px) {}
+    .paragraph {
+        font-size: 0.85rem;
+    }
 
-@media (1400px < width <=1800px) and (orientation: portrait) {}
+    .overblock>p {
+        font-size: 0.9rem;
+    }
 
-@media (1400px < width <=1800px) and (orientation: landscape) {}
+    #javascript,
+    #logic {
+        width: 95px;
+        bottom: 60px;
+        right: 60px;
+    }
 
-@media (1800px < width <=2000px) {}
+    .parent-class{
+        column-gap: 5rem;
+    }
+}
 
-@media (1800px < width <=2000px) and (orientation: portrait) {}
+@media (width >= 950px) and (1500px >= height > 800px) and (orientation:landscape){
+    .overlay{
+        height: 400px;
+    }
+    .overblock {
+        padding: 0 10px;
+    }
+}
 
-@media (1800px < width <=2000px) and (orientation: landscape) {}
+@media (width >= 950px) and (1500px < height <= 2500px) and (orientation:landscape) {
+    .overlay {
+        height: 400px;
+    }
 
-@media (width > 2000px) {}
+    .overblock {
+        padding: 0 10px;
+    }
+}
 
-@media (width > 2000px) and (orientation: portrait) {}
-
-@media (width > 2000px) and (orientation: landscape) {}
+*/

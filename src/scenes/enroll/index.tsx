@@ -14,25 +14,32 @@ type Props = {
 const Enroll = ({ setSelectedPage }: Props) => {
     const weekDaysArr = ['SUNDAY', 'TUESDAY', 'WEDNESDAY'];
     const numOfDays = [1, 2, 3];
-    const timesSlots = ["14:00-15:00", "15:15-16:15", "16:30-17:30", "17:45-18:45"];
+    const timesSlots = ["14:00 - 15:00", "15:15 - 16:15", "16:30 - 17:30", "17:45 - 18:45"];
+    const classes = ['SCRATCH', 'PYTHON', 'JAVASCRIPT', 'LOGIC LAB']
     const inputStyles = `w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`
     const checkboxText = "select your preferred days of the week".toUpperCase();
     const radioText = "how many days you want in the week".toUpperCase();
 
     const [numKids, setNumKids] = useState<number>(1);
-    const [selectedDays, setSelectedDays] = useState<string[]>([]);
     const [selectedRadioDays, setSelectedRadioDays] = useState<number>(1);
+    const [selectedDays, setSelectedDays] = useState<string[]>([]);
+
+
     const checkboxRefs = useRef<(HTMLInputElement | null)[]>([]);
+    const valueRef = useRef<HTMLInputElement | null>();
     const formRef = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-    const validateMin = () => {
-        const minDays = selectedRadioDays;
+    const validateMin = (value: number = 0, weekDays: string[] = []) => {
+        const minDays = value === 0 ? selectedRadioDays : value;
+        const days = weekDays[0] ? weekDays.length : selectedDays.length;
+        const varning = minDays === 1 ? `Please select at least 1 day.` : `Please select at least 2 days.`
         checkboxRefs.current.forEach((ref) => {
             if (ref) {
-                if (selectedRadioDays && selectedDays.length < minDays) {
-                    ref.setCustomValidity(`Please select at least ${minDays} days.`);
+                if (days < minDays && minDays < 3) {
+                    ref.setCustomValidity(varning);
+                    minDays === 2 && ref.reportValidity();
                 } else {
                     ref.setCustomValidity('');
                 }
@@ -40,36 +47,58 @@ const Enroll = ({ setSelectedPage }: Props) => {
         });
     };
 
+    const validateMax = (num: number) => {
+        const maxNum = 6;
+        if (num > maxNum) {
+            valueRef.current?.setCustomValidity('MAXIMUM NUMBER OF KIDS IS 6');
+            valueRef.current?.reportValidity();
+        } else {
+            valueRef.current?.setCustomValidity('');
+        }
+    }
+
     const handleChildrenChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNumKids(Number(event.target.value));
+        validateMax(Number(event.target.value));
     };
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(event.target.value)
         setSelectedRadioDays(value);
-        setSelectedDays([]); // Uncheck all checkboxes when radio button changes
-    };
-
-    const handleCheckboxChange = (day: any) => {
-        if (selectedRadioDays === 1) {
-            setSelectedDays([day]); // Only one checkbox can be checked for 1 day
-        } else if (selectedRadioDays === 2) {
-            if (selectedDays.includes(day)) {
-                setSelectedDays(selectedDays.filter(d => d !== day)); // Uncheck if already checked
-            } else if (selectedDays.length < 2) {
-                setSelectedDays([...selectedDays, day]); // Check new box if less than 2 are checked
-            } else {
-                // Uncheck the first checked box and check the new one
-                setSelectedDays([selectedDays[1], day]);
-            }
-        } else if (selectedRadioDays === 3) {
-            if (selectedDays.includes(day)) {
-                setSelectedDays(selectedDays.filter(d => d !== day)); // Uncheck if already checked
-            } else {
-                setSelectedDays([...selectedDays, day]); // Check any box
-            }
+        validateMin(value);
+        if (value === weekDaysArr.length) {
+            setSelectedDays([...weekDaysArr]);
+        } else {
+            setSelectedDays([]);
         }
     };
+
+
+    const handleCheckboxChange = (day: string) => {
+        let weekDays: string[] = [];
+
+        if (selectedRadioDays === 1) {
+            weekDays = [day];
+            setSelectedDays(weekDays);
+            // Only one checkbox can be checked for 1 day
+        } else if (selectedRadioDays === 2) {
+            if (selectedDays.includes(day)) {
+                weekDays = selectedDays.filter(d => d !== day);
+                setSelectedDays(weekDays);
+                // Uncheck if already checked
+            } else if (selectedDays.length < 2) {
+                weekDays = [...selectedDays, day];
+                setSelectedDays(weekDays);
+                // Check new box if less than 2 are checked
+            } else {
+                // Uncheck the first checked box and check the new one
+                weekDays = [selectedDays[1], day];
+                setSelectedDays(weekDays);
+            }
+        }
+        validateMin(0, weekDays);
+    };
+
 
     const handleButtonClick = async () => {
         validateMin();
@@ -113,7 +142,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                 setTimeout(() => {
                     setIsSubmitted(false);
-                }, 3000); 
+                }, 3000);
             } catch (error) {
                 console.error("Error uploading file:", error);
                 setIsSubmitting(false);
@@ -124,7 +153,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
     };
 
     return (
-        <section id='enroll' className='mx-auto w-5/6'> 
+        <section id='enroll' className='mx-auto w-5/6 pt-[5vw] xxs:pt-[100px]'>
             {/* className='mx-auto w-5/6 xxxs:pt-24 md:pt-32 pb-32 portrait:pt-28 xxxs:text-xs md:text-[_1rem] */}
             <motion.div
                 onViewportEnter={() => setSelectedPage(SelectedPage.Enroll)}>
@@ -142,10 +171,11 @@ const Enroll = ({ setSelectedPage }: Props) => {
                     <Htext>
                         <span className='text-primary-500'> ENROLL </span> FOR A CLASS
                     </Htext>
-                    <p className="mt-5">
-                        Please, fill the form below
-                    </p>
+
                 </motion.div>
+                <p className="mt-10">
+                    Please, fill the form below
+                </p>
                 <div className="enroll justify-between gap-8 md:flex">
                     <motion.div
                         className='basis-3/5 md:mt-0 z-[5]'
@@ -181,52 +211,71 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* number of kids */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
-                                <div className='kids inline-flex'>
+                                <div className='kids inline-flex justify-between'>
                                     <label className='text-white pr-5'>{"Number of kids".toUpperCase()}</label>
                                     <input type="number"
                                         name="number_of_kids"
                                         value={numKids || ''}
                                         defaultValue={1}
-                                        nonce=''
                                         min={1}
                                         max={6}
                                         required
                                         onChange={handleChildrenChange}
+                                        ref={(el) => (valueRef.current = el)}
                                         className='appearance-none w-11 block pl-4 border rounded-md text-gray-100 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                     />
                                 </div>
                             </div>
 
                             {/* kid's age */}
-                            <div className='w-full mt-3 rounded-lg bg-primary-300 px-5 py-3 flex justify-between flex-wrap'>
-                                {[...Array(numKids)].map((_, index) => (
+                            <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
+                                <p className='text-white pr-2'>KID's AGE AND CLASS</p>
+                                <div className="kidparent items-center">
+                                    {[...Array(numKids)].map((_, index) => (
+                                        index + 1 <= 6 &&
+                                        <div key={index} className='kid flex justify-between gap-1 my-2 px-3'>
+                                            <div className='kidage flex justify-between h-fit'>
+                                                <label >
+                                                    {index + 1 === 1 ? '1st KID' :
+                                                        index + 1 === 2 ? '2nd KID' :
+                                                            index + 1 === 3 ? '3rd KID' : `${index + 1}th KID`}
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    name={`child_${index + 1}_age`}
+                                                    defaultValue={6}
+                                                    min={6}
+                                                    max={16}
+                                                    required
+                                                    className='appearance-none block w-11 pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                />
 
-                                    <div key={index} className='kidage inline-flex py-1 justify-between'>
-                                        <label className='text-white pr-2'>
-                                            {index + 1 === 1 ? '1st KID AGE' :
-                                                index + 1 === 2 ? '2nd KID AGE' :
-                                                    index + 1 === 3 ? '3rd KID AGE' :
-                                                        `${index + 1}th KID AGE`}</label>
-                                        <input
-                                            type="number"
-                                            name={`child_${index + 1}_age`}
-                                            defaultValue={6}
-                                            min={6}
-                                            max={16}
-                                            required
-                                            className='appearance-none block w-11 pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
-                                        />
-                                    </div>
-                                ))}
+                                            </div>
+                                            <div className='classes'>
+                                                {classes.map(item => (
+                                                    <div key={`${index}-${item}`} className='child-classes w-full'>
+                                                        <label> {`${item}`}</label>
+                                                        <input
+                                                            type='checkbox'
+                                                            name={item}
+                                                        />
+
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             {/* num of days */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col'>
-                                <label className='text-white pr-5 pb-2'>{radioText}</label>
-                                <div className='w-full flex py-1 flex-wrap justify-between'>
+                                <p className='text-white'>{radioText}</p>
+                                <div className='daysparent w-full flex py-1 flex-wrap justify-between'>
                                     {numOfDays.map(day => (
                                         <div key={day} className='days inline-flex justify-between md:text-md items-center'>
-                                            <label className='text-gray-250 mx-1'>{day === 1 ? `${day} day` : `${day} days`}</label>
+                                            <label className='text-gray-250 mx-1'>{day === 1 ? `${day} DAY` : `${day} DAYS`}</label>
                                             <input
                                                 name="num_of_days"
                                                 type="radio"
@@ -242,11 +291,11 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* days of week */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col'>
-                                <label className='text-white'>{checkboxText}</label>
-                                <div className='week w-full flex py-1 justify-between'>
+                                <p className='text-white'>{checkboxText}</p>
+                                <div className='week w-full flex py-1 md:gap-1 justify-between'>
                                     {weekDaysArr.map((day, index) => (
                                         <div key={day} className='weekday inline-flex justify-between items-center'>
-                                            <label className='text-gray-250 pr-2'>{day}</label>
+                                            <label className='text-gray-250'>{day}</label>
                                             <input
                                                 name="days_of_week"
                                                 type="checkbox"
@@ -263,28 +312,31 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* range of time */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col items-center'>
-                                <label className='text-white mr-2 w-2/5'>{"times slots".toUpperCase()}</label>
+                                <p className='text-white mr-2 w-2/5'>{"times slots".toUpperCase()}</p>
                                 {selectedDays.map((day, index) => (
-                                    <>
-                                        <p key={index}>{day}</p>
-                                        <div className='time md:w-5/6 flex items-center my-2 text-gray-250 justify-between'>
+                                    <div className="mt-3" key={index}>
+                                        <p>{day}</p>
+                                        <div className='time flex items-center my-1 text-gray-250 justify-between'>
                                             {timesSlots.map((slot, index) => (
                                                 <div key={index} className='timeslot flex flex-col items-center'>
-                                                    <label className='mx-2'>{slot}</label>
+                                                    <label className='sm:left-0 mx-2'>
+                                                        {slot.split(' ').map((item, index) => (
+                                                            <div key={index}>{item}</div>
+                                                        ))}
+                                                    </label>
                                                     <input type="radio"
                                                         name={`${day}_time`}
                                                         value={slot}
                                                         required
-                                                        className='h-4 w-4'
+                                                        className='h-4 w-4 mt-1'
                                                     />
                                                 </div>
                                             ))}
                                         </div>
-                                    </>
+                                    </div>
                                 ))}
                             </div>
 
-                            {/* questions: write for user request: write for each selected day timeslot in diapason 14:00 - 19:00   */}
                             <textarea
                                 className={`${inputStyles} mt-3`}
                                 name='Questions'
@@ -321,8 +373,8 @@ const Enroll = ({ setSelectedPage }: Props) => {
                         }}
                     >
                         <div className="w-full rounded-lg border-spacing-1 before:absolute before:-bottom-44 before:right-0
-                         md:before:-bottom-40 mdl:before:-bottom-26 lg:before:-bottom-16 xl:before:bottom-10
-                          md:before:right-[5%] lg:before:right-[90%] xl:before:right-[100%] before:z-[1] md:before:content-enroll">
+                         md:before:-bottom-8 mdl:before:-bottom-5 xl:before:-bottom-2
+                          md:before:right-[-30px] xl:before:right-[100%] before:z-[1] md:before:content-enroll mdl:before:content-enrollmd">
                             <img
                                 className="w-full"
                                 alt="enroll-page-graphic"

@@ -11,7 +11,7 @@ import Address from "@/scenes/location";
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
-
+  
   useEffect(() => {
 
     const handleScroll = () => {

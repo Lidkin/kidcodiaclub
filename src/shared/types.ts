@@ -8,7 +8,7 @@ export enum SelectedPage {
 }
 
 export enum QueryWidth {
-    MinWidth = "(min-width:950px)",
+    MediumWidth = "(min-width:950px)"
 }
 
 export interface OfferingType{ 
