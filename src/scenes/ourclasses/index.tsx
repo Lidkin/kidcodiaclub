@@ -3,6 +3,10 @@ import python from "@/assets/python-example.png";
 import scratch from "@/assets/scratch-example.png";
 import javascript from "@/assets/js-example.png";
 import logic from "@/assets/logic-example.png";
+import pythonMob from "@/assets/mobile/python-example.png";
+import scratchMob from "@/assets/mobile/scratch-example.png";
+import javascriptMob from "@/assets/mobile/js-example.png";
+import logicMob from "@/assets/mobile/logic-example.png";
 import kidcodia from '@/assets/kidcodia-text-location.png';
 import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
@@ -19,7 +23,8 @@ const classes: Array<ClassType> = [
         description: `This class will introduce children to basic programming concepts using Scratch, a visual
          programming language. The classes are interactive and hands-on, allowing students to experiment and explore
           independently. Throughout the course, creativity and problem-solving skills are encouraged.`,
-        image: scratch
+        image: scratch,
+        imageMob: scratchMob
     },
     {
         name: "Python",
@@ -27,7 +32,8 @@ const classes: Array<ClassType> = [
         description: `This program will introduce children to basic programming concepts using Python.
           Over time, students will develop a strong foundation in coding and logical thinking,
            fostering their growth in computational skills and problem-solving abilities.`,
-        image: python
+        image: python,
+        imageMob: pythonMob,
     },
     {
         name: "JavaScript",
@@ -36,6 +42,7 @@ const classes: Array<ClassType> = [
          In these interactive sessions, students experiment with creating interactive images and integrating audio and media.
           Over time, students will develop a strong foundation in coding, enhancing their creativity and technical skills.`,
         image: javascript,
+        imageMob: javascriptMob,
         gif: javascriptGif,
     },
     {
@@ -44,6 +51,7 @@ const classes: Array<ClassType> = [
         description: `This program will develop logical thinking, mathematical intelligence, attention,
          and problem-solving skills through a variety of logical board games, mazes, puzzles, and visual materials.`,
         image: logic,
+        imageMob: logicMob,
         gif: logicGif,
     }
 
@@ -56,7 +64,7 @@ type Props = {
 
 const Classes = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
-
+  
     return (
         <section
             id="classes"
@@ -94,6 +102,7 @@ const Classes = ({ setSelectedPage }: Props) => {
                                     age={item.age}
                                     description={item.description}
                                     image={item.image}
+                                    imageMob={item.imageMob}
                                     gif={item.gif}
                                     mediumScreen={isAboveMediumScreens}
                                     setSelectedPage={setSelectedPage}

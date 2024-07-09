@@ -3,6 +3,7 @@ import ActionButton from '@/shared/ActionButton';
 import { SelectedPage, QueryWidth } from '@/shared/types';
 import HomePageText from '@/assets/kidcodia.png';
 import HomePageGraphic from '@/assets/laptop-classroom-home.png';
+import HomePageGraphicMob from '@/assets/mobile/laptop-classroom-home.png';
 import DILogo from '@/assets/LogoDI.png';
 import ScratchLogo from '@/assets/Scratch-cat-logo-300x300px.png';
 import { motion } from 'framer-motion';
@@ -68,7 +69,7 @@ const Home = ({ setSelectedPage }: Props) => {
                 {/* image */}
                 <div className='home-image flex basis-3/5 justify-center
                     slg:ml-20 mdl:ml-40 md:mt-16 md:justify-items-end md:pt-4'>
-                    <img alt="home-page-graphic" src={HomePageGraphic} />
+                    <img alt="home-page-graphic" src={isAboveMediumScreens ? HomePageGraphic : HomePageGraphicMob} />
                 </div>
 
             </motion.div>

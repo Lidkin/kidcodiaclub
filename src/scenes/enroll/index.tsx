@@ -1,21 +1,24 @@
-import { SelectedPage } from '@/shared/types';
+import { SelectedPage, QueryWidth } from '@/shared/types';
 import EnrollGraphic from "@/assets/enroll-img.png";
+import EnrollGraphicMob from "@/assets/mobile/enroll-img.png";
 import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
 import { useState, useRef } from 'react';
 import { ref, uploadBytes } from 'firebase/storage';
 import storage from '@/firebaseconfig';
 import "./enroll.css";
+import useMediaQuery from '@/hooks/useMediaQuery';
 
 type Props = {
     setSelectedPage: (value: SelectedPage) => void;
 }
 
 const Enroll = ({ setSelectedPage }: Props) => {
+    const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
     const weekDaysArr = ['SUNDAY', 'TUESDAY', 'WEDNESDAY'];
     const numOfDays = [1, 2, 3];
     const timesSlots = ["14:00 - 15:00", "15:15 - 16:15", "16:30 - 17:30", "17:45 - 18:45"];
-    const classes = ['SCRATCH', 'PYTHON', 'JAVASCRIPT', 'LOGIC LAB']
+    const classes = [{ key8: 'SCRATCH' }, { key10: 'PYTHON' }, { key12: 'JAVASCRIPT' }, { key0: 'LOGIC LAB' }];
     const inputStyles = `w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`
     const checkboxText = "select your preferred days of the week".toUpperCase();
     const radioText = "how many days you want in the week".toUpperCase();
@@ -24,12 +27,27 @@ const Enroll = ({ setSelectedPage }: Props) => {
     const [selectedRadioDays, setSelectedRadioDays] = useState<number>(1);
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
-
     const checkboxRefs = useRef<(HTMLInputElement | null)[]>([]);
+    const classesRef = useRef<(HTMLInputElement | null)[]>([]);
     const valueRef = useRef<HTMLInputElement | null>();
     const formRef = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+    const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = parseInt(event.target.value);
+        classesRef.current.forEach((ref) => {            
+            if (ref) {
+                const minAge = ref.id.replace('key','');
+                if (value < parseInt(minAge)) {
+                    ref.disabled = true;
+                    ref.checked = false;
+                } else {
+                   ref.disabled = false;
+                }
+            }
+        });
+    };
 
     const validateMin = (value: number = 0, weekDays: string[] = []) => {
         const minDays = value === 0 ? selectedRadioDays : value;
@@ -139,6 +157,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                 form.reset();
                 setSelectedDays([]);
                 setSelectedRadioDays(1);
+                setNumKids(1);
 
                 setTimeout(() => {
                     setIsSubmitted(false);
@@ -241,23 +260,29 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                                             index + 1 === 3 ? '3rd KID' : `${index + 1}th KID`}
                                                 </label>
                                                 <input
-                                                    type="number"
-                                                    name={`child_${index + 1}_age`}
-                                                    defaultValue={6}
-                                                    min={6}
-                                                    max={16}
-                                                    required
-                                                    className='appearance-none block w-11 pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                        type="number"
+                                                        name={`child_${index + 1}_age`}
+                                                        defaultValue={6}
+                                                        min={6}
+                                                        max={16}
+                                                        required
+                                                        onChange={handleAgeChange}
+                                                        className='appearance-none block w-11 pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                                 />
-
                                             </div>
                                             <div className='classes'>
-                                                {classes.map(item => (
-                                                    <div key={`${index}-${item}`} className='child-classes w-full'>
-                                                        <label> {`${item}`}</label>
+                                                {classes.map((item, indx) => (
+                                                    <div key={`${index}-${Object.values(item)}`} className='child-classes w-full'>
+                                                        <label>{Object.values(item)}</label>
                                                         <input
                                                             type='checkbox'
-                                                            name={item}
+                                                            id={`${Object.keys(item)}`}
+                                                            name={`${Object.values(item)}_child_${index + 1}`}
+                                                            disabled={Object.values(item).toString() !== 'LOGIC LAB' ? true : false}
+                                                        
+                                                            // value={`child_${index + 1} - ${classesRef.current[indx]?.value}`}
+                                                            // value = {kidRef.current[index]?.name}
+                                                            ref={(el) => (classesRef.current[indx] = el)}
                                                         />
 
                                                     </div>
@@ -378,7 +403,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                             <img
                                 className="w-full"
                                 alt="enroll-page-graphic"
-                                src={EnrollGraphic}
+                                src={isAboveMediumScreens ? EnrollGraphic : EnrollGraphicMob}
                             />
                         </div>
                     </motion.div>

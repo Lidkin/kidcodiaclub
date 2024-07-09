@@ -7,17 +7,18 @@ type Props = {
   age: string;
   description?: string;
   image: string;
+  imageMob: string;
   gif?: string;
   mediumScreen: boolean;
   setSelectedPage: (value: SelectedPage) => void;
 }
 
 
-const Class = ({ name, age, description, image, gif, mediumScreen, setSelectedPage }: Props) => {
+const Class = ({ name, age, description, image, imageMob, gif, mediumScreen, setSelectedPage }: Props) => {
 
   const imgAbs = `absolute z-10 bottom-16 right-24`;
-  const overlayStyles = `absolute z-30 bg-primary-500 opacity-0 transition duration-500 hover:opacity-90`;
-
+  const overlayStyles = `absolute z-30 bg-primary-500 opacity-0 transition duration-500 hover:opacity-90 focus:opacity-90`;
+  
   return (
     <div className={mediumScreen ? 'relative h-auto' :
       'relative'}>
@@ -36,7 +37,7 @@ const Class = ({ name, age, description, image, gif, mediumScreen, setSelectedPa
           </div>
         </div>
       </div>
-      <img className="images z-1" src={image} alt={`${name}-image`} />
+      <img className="images z-1" src={mediumScreen ? image : imageMob} alt={`${name}-image`} />
       {name === 'JavaScript' ? <img id="javascript" className={`${imgAbs} w-[_20vw] md:w-[_10vw] rounded-xl`} src={gif} alt={`${name}-gif`} /> :
         name === 'Logic Lab' ? <img id="logic" className={`${imgAbs} w-[_20vw] md:w-[_10vw] rounded-xl`} src={gif} alt={`${name}-gig`} /> : <></>}
     </div>

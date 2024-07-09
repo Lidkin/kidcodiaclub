@@ -21,6 +21,7 @@ export interface ClassType {
     name: string;
     age: string;
     image: string;
+    imageMob: string;
     description?: string;
     gif?: string;
 }
