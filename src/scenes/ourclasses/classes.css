@@ -70,10 +70,6 @@
 
 /* portrait done */
 
-.class:hover{
-    background-color: var(--secondary-50);
-}
-
 @media (300px < width <=350px) and (orientation: portrait){
     .paragraph {
             font-size: 0.7rem;

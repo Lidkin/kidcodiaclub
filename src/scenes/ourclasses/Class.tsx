@@ -3,6 +3,8 @@ import { SelectedPage } from "@/shared/types";
 
 
 type Props = {
+  id: number;
+  active?: number;
   name: string;
   age: string;
   description?: string;
@@ -14,16 +16,17 @@ type Props = {
 }
 
 
-const Class = ({ name, age, description, image, imageMob, gif, mediumScreen, setSelectedPage }: Props) => {
-
+const Class = ({ active, id, name, age, description, image, imageMob, gif, mediumScreen, setSelectedPage }: Props) => {
+  console.log(active, id)
   const imgAbs = `absolute z-10 bottom-16 right-24`;
-  const overlayStyles = `absolute z-30 bg-primary-500 opacity-0 transition duration-500 hover:opacity-90 focus:opacity-90`;
+  const overlayStyles = `absolute z-30 bg-primary-500 opacity-0 transition duration-500`;
+  const hover = mediumScreen ? `hover:opacity-90` : active === id && `opacity-90`;
   
   return (
     <div className={mediumScreen ? 'relative h-auto' :
       'relative'}>
       <p className='text-2xl bg-primary-100 rounded-t-lg text-center py-2 text-white'>{name}</p>
-      <div className={`overlay ${overlayStyles} flex justify-between items-center rounded-b-lg`}>
+      <div className={`overlay ${overlayStyles} ${hover} flex justify-between items-center rounded-b-lg`}>
         <div className='overblock h-full flex text-center text-white flex-col items-center justify-between whitespace-normal py-2'>
           <p className="font-bold">{age}</p>
           <div className="text flex justify-between flex-col">

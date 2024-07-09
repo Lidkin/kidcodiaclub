@@ -1,4 +1,5 @@
 import { SelectedPage, ClassType, QueryWidth } from '@/shared/types'
+import { useState, useEffect, useRef } from 'react';
 import python from "@/assets/python-example.png";
 import scratch from "@/assets/scratch-example.png";
 import javascript from "@/assets/js-example.png";
@@ -18,6 +19,7 @@ import './classes.css';
 
 const classes: Array<ClassType> = [
     {
+        id: 1,
         name: "Scratch",
         age: "Сhildren's age 8-10",
         description: `This class will introduce children to basic programming concepts using Scratch, a visual
@@ -27,6 +29,7 @@ const classes: Array<ClassType> = [
         imageMob: scratchMob
     },
     {
+        id: 2,
         name: "Python",
         age: "Сhildren's age 10-14",
         description: `This program will introduce children to basic programming concepts using Python.
@@ -36,6 +39,7 @@ const classes: Array<ClassType> = [
         imageMob: pythonMob,
     },
     {
+        id: 3,
         name: "JavaScript",
         age: "Сhildren's age 12-16",
         description: `This program will introduce children to creative coding with JavaScript.
@@ -46,6 +50,7 @@ const classes: Array<ClassType> = [
         gif: javascriptGif,
     },
     {
+        id: 4,
         name: "Logic Lab",
         age: "Сhildren's age 6-16",
         description: `This program will develop logical thinking, mathematical intelligence, attention,
@@ -64,13 +69,28 @@ type Props = {
 
 const Classes = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
+    const [activeClass, setActiveClass] = useState<ClassType | null>(null);
+    const classRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY + window.innerHeight/2;
+        for (let i = 0; i < classRefs.current.length; i++) {
+            const element = classRefs.current[i];
+            if (element && element.offsetTop <= scrollPosition) {
+                setActiveClass(classes[i]);
+            }
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
   
     return (
         <section
             id="classes"
-            // className="mx-auto min-h-full w-5/6 xxxs:pt-24 md:pt-32 portrait:pt-28
-            //  md:bg-binarycode md:bg-center md:bg-[_120%] lg:bg-[_110%] xl:bg-contain md:bg-no-repeat"
-
             className="mx-auto min-h-full w-5/6 md:bg-binarycode md:bg-center md:bg-[_120%] lg:bg-[_110%] xl:bg-contain md:bg-no-repeat"
         >
             <motion.div
@@ -95,9 +115,11 @@ const Classes = ({ setSelectedPage }: Props) => {
                         'flex flex-col'}
                     >
                         {classes.map((item: ClassType, index) => (
-                            <div key={index} className='class'>
+                            <div key={index} className='class' ref={el => (classRefs.current[index] = el)}>
                                 <Class
                                     key={`{${item.name}-${index}}`}
+                                    id={item.id}
+                                    active={activeClass?.id}
                                     name={item.name}
                                     age={item.age}
                                     description={item.description}

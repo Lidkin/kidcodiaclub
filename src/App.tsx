@@ -37,7 +37,6 @@ function App() {
         setSelectedPage={setSelectedPage}
       />
       <Home setSelectedPage={setSelectedPage} />
-      {/* <Offerings setSelectedPage={setSelectedPage} /> */}
       <Classes setSelectedPage={setSelectedPage} />
       <Address setSelectedPage={setSelectedPage}></Address>
       <Enroll setSelectedPage={setSelectedPage} />

@@ -18,6 +18,8 @@ export interface OfferingType{
 }
 
 export interface ClassType {
+    id: number;
+    active?: number;
     name: string;
     age: string;
     image: string;
