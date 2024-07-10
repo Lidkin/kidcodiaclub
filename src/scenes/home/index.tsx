@@ -46,7 +46,7 @@ const Home = ({ setSelectedPage }: Props) => {
                         <p className="mt-8 text-sm md:text-start">
                             Are you looking for a fun and educational after-school activity for your child?
                             <br />Do you want them to develop <span className='text-primary-100 font-montserrat text-md'>logic</span> and problem-solving skills while <span className='text-primary-500 font-montserrat text-md'>thinking critically</span> and <span className='text-secondary-50 font-montserrat text-md'>creatively</span>?
-                            <br /> Kidcodia is the perfect place for young minds aged 7-16 to dive into the world of programming and technology!</p>
+                            <br /> Kidcodia is the perfect place for young minds aged 6-16 to dive into the world of programming and technology!</p>
                     </motion.div>
                     {/* actions */}
                     <motion.div
