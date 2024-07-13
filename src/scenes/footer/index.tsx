@@ -1,5 +1,6 @@
 import Logo from '@/assets/Logo-mini.png'
 import { FooterType } from '@/shared/types'
+import { useTranslation } from 'react-i18next';
 
 const images: Array<FooterType> = [
     { title: 'Image by freepik', href: 'https://www.freepik.com/' },
@@ -8,6 +9,7 @@ const images: Array<FooterType> = [
 ];
 
 const Footer = () => {
+    const { t } = useTranslation();
 
     return (
         <div className='footer bg-primary-100 py-10'>
@@ -18,11 +20,11 @@ const Footer = () => {
                         <p className='mx-2 font-bold'>KIDCODIA</p>
                     </div>
                     <p className='mt-2 mb-10'>
-                        Fun and educational activities for ages 6-16
+                        {t('footer_one')}
                         <br/>
-                        Develop critical thinking, logic, and problem-solving skills
+                        {t('footer_two')}
                         <br/>
-                        Explore programming and technology
+                        {t('footer_three')}
                     </p>
                 </div>
                 <div className='imglinks mt-10 md:mt-0 text-dxs text-gray-100 flex align-bottom'>

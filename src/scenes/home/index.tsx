@@ -7,6 +7,7 @@ import HomePageGraphicMob from '@/assets/mobile/laptop-classroom-home.png';
 import DILogo from '@/assets/LogoDI.png';
 import ScratchLogo from '@/assets/Scratch-cat-logo-300x300px.png';
 import { motion } from 'framer-motion';
+import { useTranslation, Trans } from 'react-i18next';
 
 type Props = {
     setSelectedPage: (value: SelectedPage) => void;
@@ -14,7 +15,7 @@ type Props = {
 
 const Home = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
-    
+    const { t }= useTranslation();
     return (
         <section
             id="home"
@@ -44,9 +45,11 @@ const Home = ({ setSelectedPage }: Props) => {
                             </div>
                         </div>
                         <p className="mt-8 text-sm md:text-start">
-                            Are you looking for a fun and educational after-school activity for your child?
-                            <br />Do you want them to develop <span className='text-primary-100 font-montserrat text-md'>logic</span> and problem-solving skills while <span className='text-primary-500 font-montserrat text-md'>thinking critically</span> and <span className='text-secondary-50 font-montserrat text-md'>creatively</span>?
-                            <br /> Kidcodia is the perfect place for young minds aged 6-16 to dive into the world of programming and technology!</p>
+                            {t('home_description_one')}
+                            <br />
+                            <Trans i18nKey='home_description_two'>Do you want them to develop <span className='text-primary-100 font-montserrat text-md'>logic</span> and problem-solving skills while <span className='text-primary-500 font-montserrat text-md'>thinking critically</span> and <span className='text-secondary-50 font-montserrat text-md'>creatively</span>?    
+                            </Trans>
+                            <br />{t('home_description_three')}</p>
                     </motion.div>
                     {/* actions */}
                     <motion.div
@@ -61,7 +64,7 @@ const Home = ({ setSelectedPage }: Props) => {
                         }}
                     >
                         <ActionButton setSelectedPage={setSelectedPage}>
-                            Enroll
+                            { t('enroll') }
                         </ActionButton>
                     </motion.div>
                 </div>
@@ -77,7 +80,7 @@ const Home = ({ setSelectedPage }: Props) => {
                 <div className='externals hidden w-0 h-0'>
                     <div className='mx-auto w-11/12'>
                         <div className='flex w-full items-center justify-between gap-8'>
-                            <p className='font-montserrat mb-2 font-semibold text-md'>with support of</p>
+                        <p className='font-montserrat mb-2 font-semibold text-md'>{t('support')}</p>
                             <a href='https://developers.institute/'>
                                 <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
                             </a>
@@ -91,7 +94,7 @@ const Home = ({ setSelectedPage }: Props) => {
                     <div className='mx-auto w-5/6'>
                         <div className='flex w-full items-center justify-between gap-8'>
                             <div>
-                                <p className='font-montserrat mb-2 font-semibold text-md'>with support of</p>
+                                <p className='font-montserrat mb-2 font-semibold text-md'>{t('support')}</p>
                                 <a href='https://developers.institute/'>
                                     <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
                                 </a>

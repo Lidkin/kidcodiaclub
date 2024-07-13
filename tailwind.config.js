@@ -1,3 +1,5 @@
+import { plugin } from 'postcss';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -35,11 +37,14 @@ export default {
       backgroundImage: (theme) => ({
         "javascript": "url(./assets/javascript.gif)",
         "binarycode": "url(./assets/bg-binarycode-md.png)",
-        "logic": "url(./assets/logic.gif)"
+        "logic": "url(./assets/logic.gif)",
+        "en": "url(./assets/icons/en.png)",
+        "ru": "url(./assets/icons/ru.png)"
       }),
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
-        montserrat: ["Montserrat", "sans-serif"]
+        montserrat: ["Montserrat", "sans-serif"],
+        manrope: ["Manrope", "sans-serif", '550']
       },
       content: {
         kidcodiatext: "url('./assets/bg-kidcodia.png')",
@@ -65,5 +70,6 @@ export default {
       xxl: "2000px"
     }
   },
-  plugins: [],
+  plugins: [
+  ],
 }

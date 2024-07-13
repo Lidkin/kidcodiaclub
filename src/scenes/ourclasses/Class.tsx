@@ -1,5 +1,6 @@
 import ActionButton from "@/shared/ActionButton";
 import { SelectedPage } from "@/shared/types";
+import { useTranslation } from "react-i18next";
 
 
 type Props = {
@@ -7,7 +8,6 @@ type Props = {
   active?: number;
   name: string;
   age: string;
-  description?: string;
   image: string;
   imageMob: string;
   gif?: string;
@@ -16,27 +16,27 @@ type Props = {
 }
 
 
-const Class = ({ active, id, name, age, description, image, imageMob, gif, mediumScreen, setSelectedPage }: Props) => {
-  console.log(active, id)
+const Class = ({ active, id, name, age, image, imageMob, gif, mediumScreen, setSelectedPage }: Props) => {
   const imgAbs = `absolute z-10 bottom-16 right-24`;
   const overlayStyles = `absolute z-30 bg-primary-500 opacity-0 transition duration-500`;
   const hover = mediumScreen ? `hover:opacity-90` : active === id && `opacity-90`;
-  
+  const { t } = useTranslation();
+
   return (
     <div className={mediumScreen ? 'relative h-auto' :
       'relative'}>
       <p className='text-2xl bg-primary-100 rounded-t-lg text-center py-2 text-white'>{name}</p>
       <div className={`overlay ${overlayStyles} ${hover} flex justify-between items-center rounded-b-lg`}>
         <div className='overblock h-full flex text-center text-white flex-col items-center justify-between whitespace-normal py-2'>
-          <p className="font-bold">{age}</p>
+          <p className="font-bold">{ t('age')} {age}</p>
           <div className="text flex justify-between flex-col">
-            <p className='description'>{description}</p>
-            <p className="paragraph">1 hour per session</p>
-            <p className="paragraph">80 NIS per session</p>
-            <p className="paragraph">Up to 6 kids in a group</p>
+            <p className='description'>{t(`${id}_description`)}</p>
+            <p className="paragraph">{t('time')}</p>
+            <p className="paragraph">{t('price')}</p>
+            <p className="paragraph">{t('classroom_capacity')}</p>
           </div>
           <div className="button mb-3 xl:mb-5">
-            <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>Enroll</ActionButton>
+            <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
           </div>
         </div>
       </div>

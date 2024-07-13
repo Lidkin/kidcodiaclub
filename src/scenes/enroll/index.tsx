@@ -8,20 +8,22 @@ import { ref, uploadBytes } from 'firebase/storage';
 import storage from '@/firebaseconfig';
 import "./enroll.css";
 import useMediaQuery from '@/hooks/useMediaQuery';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
     setSelectedPage: (value: SelectedPage) => void;
 }
 
 const Enroll = ({ setSelectedPage }: Props) => {
+    const { t, i18n: { language } } = useTranslation();
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
-    const weekDaysArr = ['SUNDAY', 'TUESDAY', 'WEDNESDAY'];
+    const weekDaysArr = t('weekdays').split(',');
     const numOfDays = [1, 2, 3];
     const timesSlots = ["14:00 - 15:00", "15:15 - 16:15", "16:30 - 17:30", "17:45 - 18:45"];
     const classes = [{ key8: 'SCRATCH' }, { key10: 'PYTHON' }, { key12: 'JAVASCRIPT' }, { key0: 'LOGIC LAB' }];
     const inputStyles = `w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`
-    const checkboxText = "select your preferred days of the week".toUpperCase();
-    const radioText = "how many days you want in the week".toUpperCase();
+    const checkboxText = t('form_days').toUpperCase();
+    const radioText = t('form_num_days').toUpperCase();
 
     const [numKids, setNumKids] = useState<number>(1);
     const [selectedRadioDays, setSelectedRadioDays] = useState<number>(1);
@@ -188,12 +190,12 @@ const Enroll = ({ setSelectedPage }: Props) => {
                     }}
                 >
                     <Htext>
-                        <span className='text-primary-500'> ENROLL </span> FOR A CLASS
+                        <span className='text-primary-500'>{t('enroll')} </span> {t('for')}
                     </Htext>
 
                 </motion.div>
                 <p className="mt-10">
-                    Please, fill the form below
+                    {t('fill_form')}
                 </p>
                 <div className="enroll justify-between gap-8 md:flex">
                     <motion.div
@@ -214,7 +216,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                             {/* name */}
                             <input type="text"
                                 name="name"
-                                placeholder={"Name".toUpperCase()}
+                                placeholder={t('form_name').toUpperCase()}
                                 maxLength={100}
                                 required
                                 className={inputStyles} />
@@ -230,8 +232,8 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* number of kids */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
-                                <div className='kids inline-flex justify-between'>
-                                    <label className='text-white pr-5'>{"Number of kids".toUpperCase()}</label>
+                                <div className={`kids inline-flex justify-between ${language === 'ru' && 'w-[100%]'}`}>
+                                    <label className='text-white pr-5'>{t('form_num_kids').toUpperCase()}</label>
                                     <input type="number"
                                         name="number_of_kids"
                                         value={numKids || ''}
@@ -248,16 +250,14 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* kid's age */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
-                                <p className='text-white pr-2'>KID's AGE AND CLASS</p>
+                                <p className='text-white pr-2'>{ language === 'ru' ? t('form_age_classes').toUpperCase() : t('form_age_classes') }</p>
                                 <div className="kidparent items-center">
                                     {[...Array(numKids)].map((_, index) => (
                                         index + 1 <= 6 &&
                                         <div key={index} className='kid flex justify-between gap-1 my-2 px-3'>
                                             <div className='kidage flex justify-between h-fit'>
-                                                <label >
-                                                    {index + 1 === 1 ? '1st KID' :
-                                                        index + 1 === 2 ? '2nd KID' :
-                                                            index + 1 === 3 ? '3rd KID' : `${index + 1}th KID`}
+                                                    <label >
+                                                        { t('kids').split(',')[index]}
                                                 </label>
                                                 <input
                                                         type="number"
@@ -279,9 +279,6 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                                             id={`${Object.keys(item)}`}
                                                             name={`${Object.values(item)}_child_${index + 1}`}
                                                             disabled={Object.values(item).toString() !== 'LOGIC LAB' ? true : false}
-                                                        
-                                                            // value={`child_${index + 1} - ${classesRef.current[indx]?.value}`}
-                                                            // value = {kidRef.current[index]?.name}
                                                             ref={(el) => (classesRef.current[indx] = el)}
                                                         />
 
@@ -300,7 +297,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 <div className='daysparent w-full flex py-1 flex-wrap justify-between'>
                                     {numOfDays.map(day => (
                                         <div key={day} className='days inline-flex justify-between md:text-md items-center'>
-                                            <label className='text-gray-250 mx-1'>{day === 1 ? `${day} DAY` : `${day} DAYS`}</label>
+                                            <label className='text-gray-250 mx-1'>{day === 1 ? day + ' ' + t('days').split(',')[0].toUpperCase() : day + ' ' + t('days').split(',')[1].toUpperCase()}</label>
                                             <input
                                                 name="num_of_days"
                                                 type="radio"
@@ -337,7 +334,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* range of time */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col items-center'>
-                                <p className='text-white mr-2 w-2/5'>{"times slots".toUpperCase()}</p>
+                                <p className='text-white mr-2 w-2/5'>{t('form_times').toUpperCase()}</p>
                                 {selectedDays.map((day, index) => (
                                     <div className="mt-3" key={index}>
                                         <p>{day}</p>
@@ -367,7 +364,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 name='Questions'
                                 rows={3}
                                 cols={50}
-                                placeholder='Questions'
+                                placeholder={t('form_questions')}
                             />
 
                             <div className='button mt-1 w-full text-primary-500 items-center font-montserrat'>
@@ -375,11 +372,11 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                     <button type="submit"
                                         onClick={handleButtonClick}
                                         className='w-full rounded-lg bg-primary-500 text-white hover:bg-secondary-500 px-20 py-3 transition duration-500 hover:text-primary-500'>
-                                        ENROLL
+                                        {t('enroll')}
                                     </button>
                                 )}
-                                {isSubmitting && <p className='text-lg text-primary-500 font-bold'>In process...</p>}
-                                {isSubmitted && <p className='text-lg text-primary-500 font-bold'>Thanks for enrolling!</p>}
+                                {isSubmitting && <p className='text-lg text-primary-500 font-bold'>{ t('process')}</p>}
+                                {isSubmitted && <p className='text-lg text-primary-500 font-bold'>{t('thanks')}</p>}
                             </div>
                         </form>
                         {/* End Form */}

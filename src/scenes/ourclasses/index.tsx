@@ -16,35 +16,27 @@ import useMediaQuery from '@/hooks/useMediaQuery';
 import logicGif from '@/assets/logic.gif';
 import javascriptGif from '@/assets/javascript.gif';
 import './classes.css';
+import { useTranslation } from 'react-i18next';
 
 const classes: Array<ClassType> = [
     {
         id: 1,
         name: "Scratch",
-        age: "Сhildren's age 8-10",
-        description: `This class will introduce children to basic programming concepts using Scratch, a visual
-         programming language. The classes are interactive and hands-on, allowing students to experiment and explore
-          independently. Throughout the course, creativity and problem-solving skills are encouraged.`,
+        age: "8-10",
         image: scratch,
         imageMob: scratchMob
     },
     {
         id: 2,
         name: "Python",
-        age: "Сhildren's age 10-14",
-        description: `This program will introduce children to basic programming concepts using Python.
-          Over time, students will develop a strong foundation in coding and logical thinking,
-           fostering their growth in computational skills and problem-solving abilities.`,
+        age: "10-14",
         image: python,
         imageMob: pythonMob,
     },
     {
         id: 3,
         name: "JavaScript",
-        age: "Сhildren's age 12-16",
-        description: `This program will introduce children to creative coding with JavaScript.
-         In these interactive sessions, students experiment with creating interactive images and integrating audio and media.
-          Over time, students will develop a strong foundation in coding, enhancing their creativity and technical skills.`,
+        age: "12-16",
         image: javascript,
         imageMob: javascriptMob,
         gif: javascriptGif,
@@ -52,9 +44,7 @@ const classes: Array<ClassType> = [
     {
         id: 4,
         name: "Logic Lab",
-        age: "Сhildren's age 6-16",
-        description: `This program will develop logical thinking, mathematical intelligence, attention,
-         and problem-solving skills through a variety of logical board games, mazes, puzzles, and visual materials.`,
+        age: "6-16",
         image: logic,
         imageMob: logicMob,
         gif: logicGif,
@@ -71,6 +61,7 @@ const Classes = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
     const [activeClass, setActiveClass] = useState<ClassType | null>(null);
     const classRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const { t } = useTranslation();
 
     const handleScroll = () => {
         const scrollPosition = window.scrollY + window.innerHeight/2;
@@ -107,7 +98,7 @@ const Classes = ({ setSelectedPage }: Props) => {
                         visible: { opacity: 1, x: 0 }
                     }}
                 >
-                    <Htext> CLASSES </Htext>
+                    <Htext> { t('Classes').toUpperCase()} </Htext>
                 </motion.div>
                 <div className='flex justify-center items-center'>
                     <div className={isAboveMediumScreens ?
@@ -122,7 +113,6 @@ const Classes = ({ setSelectedPage }: Props) => {
                                     active={activeClass?.id}
                                     name={item.name}
                                     age={item.age}
-                                    description={item.description}
                                     image={item.image}
                                     imageMob={item.imageMob}
                                     gif={item.gif}
