@@ -13,20 +13,22 @@ type Props = {
     setSelectedPage: (value: SelectedPage) => void;
 }
 
+console.log(window.innerWidth, window.innerHeight)
+
 const Home = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
-    const { t }= useTranslation();
+    const { t } = useTranslation();
     return (
         <section
             id="home"
-            className={`gap-16 bg-gray-20 pt-24 w-full h-full`}
+            className={`gap-16 bg-gray-20 pt-16 w-full md:h-full`}
         >
             <motion.div
-                className="w-5/6 items-center justify-center md:flex md:h-5/6 mx-auto"
+                className="home-block h-full w-5/6 items-center justify-center md:landscape:flex md:h-5/6 mx-auto md:portrait:pb-10"
                 onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
             >
                 {/* main header */}
-                <div className='z-10 mt-32 md:basis-3/5'>
+                <div className='z-10 mt-16 md:mt-32 md:basis-3/5'>
                     {/* headings */}
                     <motion.div
                         className='md:-mt-20'
@@ -47,7 +49,7 @@ const Home = ({ setSelectedPage }: Props) => {
                         <p className="mt-8 text-sm md:text-start">
                             {t('home_description_one')}
                             <br />
-                            <Trans i18nKey='home_description_two'>Do you want them to develop <span className='text-primary-100 font-montserrat text-md'>logic</span> and problem-solving skills while <span className='text-primary-500 font-montserrat text-md'>thinking critically</span> and <span className='text-secondary-50 font-montserrat text-md'>creatively</span>?    
+                            <Trans i18nKey='home_description_two'>Do you want them to develop <span className='text-primary-100 font-montserrat text-md'>logic</span> and problem-solving skills while <span className='text-primary-500 font-montserrat text-md'>thinking critically</span> and <span className='text-secondary-50 font-montserrat text-md'>creatively</span>?
                             </Trans>
                             <br />{t('home_description_three')}</p>
                     </motion.div>
@@ -64,43 +66,44 @@ const Home = ({ setSelectedPage }: Props) => {
                         }}
                     >
                         <ActionButton setSelectedPage={setSelectedPage}>
-                            { t('enroll') }
+                            {t('enroll')}
                         </ActionButton>
                     </motion.div>
                 </div>
 
                 {/* image */}
-                <div className='home-image flex basis-3/5 justify-center
-                    slg:ml-20 mdl:ml-40 md:mt-16 md:justify-items-end md:pt-4'>
+                <div className='home-image flex basis-3/5 justify-center slg:ml-20 mdl:ml-40 md:mt-16 md:justify-items-end md:pt-4 mb-1'>
                     <img alt="home-page-graphic" src={isAboveMediumScreens ? HomePageGraphic : HomePageGraphicMob} />
                 </div>
 
             </motion.div>
-            
-                <div className='externals hidden w-0 h-0'>
+
+            <div className={`${!isAboveMediumScreens ? 'externals w-full h-fit bg-primary-100 py-4 mt-12' : ''}`}>
+                {!isAboveMediumScreens && (
                     <div className='mx-auto w-11/12'>
-                        <div className='flex w-full items-center justify-between gap-8'>
-                        <p className='font-montserrat mb-2 font-semibold text-md'>{t('support')}</p>
+                        <div className='flex flex-col w-full items-center justify-between gap-2'>
+                            <p className='font-montserrat mb-2 font-semibold text-sm'>{t('support')}</p>
                             <a href='https://developers.institute/'>
                                 <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
                             </a>
                         </div>
                     </div>
-                </div>
-
+                )}
+            </div>
+          
             {/* externals */}
             {isAboveMediumScreens && (
-                <div className='md-externals h-fit w-full bg-primary-100 py-8 flex absolute bottom-0 '>
+                <div className='md-externals w-full bg-primary-100 py-10 flex xl:landscape:bottom-0'>
                     <div className='mx-auto w-5/6'>
                         <div className='flex w-full items-center justify-between gap-8'>
-                            <div>
+                            <div className='flex flex-row gap-4 md:gap-[3vw] items-center'>
                                 <p className='font-montserrat mb-2 font-semibold text-md'>{t('support')}</p>
                                 <a href='https://developers.institute/'>
                                     <img className='w-full max-w-80' src={DILogo} alt="externals-developers-institute" />
                                 </a>
                             </div>
                             <a href='https://scratch.mit.edu/'>
-                                <img className='w-full max-w-24 h-20' src={ScratchLogo} alt="externals-scratch" />
+                                <img className='w-full max-w-20 h-auto' src={ScratchLogo} alt="externals-scratch" />
                             </a>
                         </div>
                     </div>

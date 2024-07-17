@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html,
 body,
 #root,
@@ -33,7 +34,7 @@ colors {
     --gray-250: hsl(185, 37%, 30%);
     --gray-500: hsl(186, 37%, 20%);
     --primary-50: hsl(189, 93%, 90%);
-    --primary-100: hsl(189,93%,45%);
+    --primary-100: hsl(189, 93%, 45%);
     --primary-300: hsl(189, 93%, 85%);
     --primary-500: hsl(189, 93, 35%);
     --secondary-10: hsl(180, 0%, 100%);
@@ -41,11 +42,7 @@ colors {
     --secondary-400: hsl(180, 35%, 45%);
     --secondary-500: hsl(180, 35%, 78%);
 }
-/*
-h1, #navbar {
-    border: 1px red solid;
-}
-*/
+
 
 #classes {
     padding-top: 100px;
@@ -63,24 +60,20 @@ h1, #navbar {
 }
 
 
-@media (width <=415px) and (orientation: portrait){
-    #enroll{
+@media (width <=415px) and (orientation: portrait) {
+    #home{
+        margin-top: 50px;
+    }
+    .externals{
+        margin: 0;
+    }
+    #enroll {
         padding-top: 30px;
     }
 }
 
 /* navigation classes home done */
-@media (700px < width <= 950px) and (1100px < height <= 1500px) and (orientation: portrait){
-    .externals {
-        height: fit-content;
-        width: 100%;
-        padding: 3rem 0;
-        display: flex;
-        background-color: hsl(189 93% 45% );
-        visibility: visible;
-        position: absolute;
-        bottom: 0;
-    }
+@media (700px < width <=950px) and (1100px < height <=1500px) and (orientation: portrait) {
     #home {
         padding-top: 5vh;
     }
@@ -88,28 +81,41 @@ h1, #navbar {
 
 /* min-width 301px */
 /* all done */
-@media (300px < width <= 350px){
-    .footer{
+@media (300px < width <=350px) {
+    .footer {
         padding-top: 1px;
     }
-    .imglinks{
+
+    .imglinks {
         position: relative;
         left: -5%;
-        font-size: 0.5rem;
+        font-size: 0.35rem;
         width: 110%;
         justify-content: space-between;
     }
-    .imglinks div{
-        margin-right: 5vw;
-       /* width: 18%; */
+
+}
+
+@media (950px < width) and (orientation: portrait) {
+    #classes {
+        margin-top: 0px;
+        padding-top: 50px;
     }
 }
 
-@media (950px < width <=2000px){
+@media (950px < width <=1000px ) {    
+    #enroll {
+        margin-top: 100px;
+    }
+}
+
+@media (950px < width <=2000px) {
+
     #classes,
-        #location, #enroll {
-            padding-top: 50px;
-        }
+    #location,
+    #enroll {
+        padding-top: 50px;
+    }
 
     .enroll {
         padding-top: 10px;
@@ -121,17 +127,20 @@ h1, #navbar {
 /* min-width 301px */
 /* navigation home done */
 @media (300px < width <=450px) and (orientation: portrait) {
+
     #classes,
-    #location, #enroll {
+    #location,
+    #enroll {
         padding-top: 50px;
     }
+
     .enroll {
         padding-top: 10px;
     }
 }
+
 /* navigation classes home done */
-@media (300px < width <=350px) and
- (500px < height <=550px) and (orientation: portrait) {
+@media (300px < width <=350px) and (500px < height <=550px) and (orientation: portrait) {
     .home-image {
         position: absolute;
         bottom: 5px;
@@ -139,41 +148,64 @@ h1, #navbar {
         margin: 0 70px;
         z-index: 0;
     }
+}
+
+@media (300px < width <=350px) and (height > 800px) and (orientation: portrait) {
     #home{
-        padding-top: 1px;
+        margin-top: 7vh;
+    }
+    .externals{
+        margin-top: 7vh;
     }
 }
 
 /* classes home done */
-@media (300px < width <=500px) and
- (550px <height <=700px) and (orientation: portrait){
-        #home {
-                padding-top: 1px;
-            }
-        .home-image{
-            padding: 20px 40px;
-        }   
+@media (300px < width <=500px) and (550px <height <=700px) and (orientation: portrait) {
+    .home-image {
+        padding: 20px 40px;
+    }
 }
 
 /* home done */
-@media (300px < width <=500px) and
- (700px < height <=800px) and (orientation: portrait) {
+@media (300px < width <=500px) and (700px < height <=800px) and (orientation: portrait) {
     #home {
         padding-top: 1px;
+    }
+    .home-image {
+        padding: 20px 40px;
     }
 }
 
 /*home done */
-@media (300px < width <=500px) and
- (800px < height <=1000px) and (orientation: portrait) {
+@media (350px < width <=500px) and (750px < height <=1000px) and (orientation: portrait) {
     #home {
         padding-top: 5vh;
     }
-    .home-image{
-        position: absolute;
-        bottom: 6vh;
-        z-index: 1;
-        padding-right: 6vw;
+
+    .home-image>img{
+        width: 40vh;
+    }
+
+    .externals {
+        bottom: -50px;
+    }
+    
+    .imglinks {
+        position: relative;
+        left: -5%;
+        font-size: 0.5rem;
+        width: 110%;
+        justify-content: space-between;
+    }
+}
+
+@media (500px < width <=750px) and (650px < height <=850px) and (orientation: portrait) {
+    #home {
+        padding-top: 5vh;
+    }
+
+    .externals {
+        bottom: -50px;
     }
 }
 
@@ -182,11 +214,50 @@ h1, #navbar {
     #home {
         padding-top: 5vh;
     }
+    .externals {
+        bottom: -50px;
+    }
 }
+
 /* home done */
-@media (750px < width <= 950px) and (1100px >= height) and (orientation: portrait) {
+
+@media (750px < width <=950px) and (height >=1000px) and (orientation: portrait) {
     #home {
         padding-top: 5vh;
+    }
+    .home-image>img{
+        width: 50vh;
+    }
+    .externals {
+        margin-top: 50px;
+    }
+}
+
+@media (750px < width <=950px) and (height >=1100px) and (orientation: portrait) {
+    #home {
+        margin-top: 3vh;
+    }
+    .home-image>img {
+        width: 70vw;
+    }
+    .externals {
+        margin-top: 9vh;
+        padding: 3vh 0;
+    }
+}
+
+@media (750px < width <= 950px) and (orientation: portrait) {
+    #home {
+        margin-top: 3vh;
+    }
+}
+
+@media (950px < width <=1050px) and (orientation: portrait) {
+    #home-block{
+        display:none;
+    }
+    .home-image>img{
+        width: 70vh;
     }
 }
 
@@ -195,57 +266,83 @@ h1, #navbar {
 /* min-width 501px */
 /* classes done */
 @media (500px < width <=750px) and (orientation: landscape) {
-        #location, 
-        #enroll 
-        {
-            padding-top: 50px;
-        }
-    #classes{
+
+    #location,
+    #enroll {
         padding-top: 50px;
+    }
+
+    #classes {
+        /* padding-top: 50px; */
         padding: 50px 25px 0 25px;
-    }    
-    .overlay{
+    }
+
+    .overlay {
         height: 80%;
-    }    
-    .images{
-        padding: 30px;        
-    } 
-    .description{
+    }
+
+    .images {
+        padding: 30px;
+    }
+
+    .description {
         font-size: 0.8rem;
     }
+
     .enroll {
         padding-top: 5px;
     }
+
     .links {
         font-size: 1rem;
         gap: 1rem;
     }
 }
 
-@media ( 950px <= width <= 1200px) and (height < 700px) and (orientation: landscape){
-    .md-externals{
-        visibility: hidden;
-        height: 0;
-        width: 0;
-    }
-    #home{
+@media (950px <=width <=1200px) and (height < 800px) and (orientation: landscape) {
+
+    #home {
         padding-top: 150px;
     }
-    .home-image{
+
+    .home-image {
         margin-left: 20px;
     }
 }
 
-@media (500px<= width <950px) and (height < 600px) and (orientation: landscape) {
-    #home{
-        height:fit-content;
-        padding-top: 0;
+@media (width >=950px) and (height >= 600px) and (orientation: landscape) {
+
+    #home {
+        padding-top: 50px;
+    }
+
+    .home-image {
+        margin-left: 20px;
+    }
+
+    .md-externals {
+        padding: 20px 0;
     }
 }
 
-@media (500px<= width <950px) and (600px <= height < 950px) and (orientation: landscape) {
-    #home{
+@media (500px<=width <950px) and (height < 600px) and (orientation: landscape) {
+    #home {
         height: fit-content;
-        padding-top: 0;
+        padding-top: 7vh;
+    }
+}
+
+@media (500px<=width <950px) and (600px <=height < 950px) and (orientation: landscape) {
+    #home {
+        height: fit-content;
+        padding-top: 50px;
+    }
+}
+
+@media (width> 1200px) and (height>600px) and (orientation: landscape) {
+    .md-externals{
+        padding: 4vh 0;
+        position: relative;
+        bottom: 4vh;
     }
 }

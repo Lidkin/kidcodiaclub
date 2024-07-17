@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASE_apiKey,
@@ -12,5 +13,7 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const storage = getStorage(firebaseApp);
+const analytics = getAnalytics(firebaseApp);
+logEvent(analytics, 'screen_view')
 
-export default storage;
+export { storage, analytics };

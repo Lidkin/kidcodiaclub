@@ -24,17 +24,18 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const navbarBackground = isTopOfPage ? "" : "bg-gray-20 z-50";
 
   return <nav>
-    <div id="navbar" className={`${navbarBackground} ${flexBetween} fixed top-0 w-full py-6 z-100`}>
+    <div id="navbar" className={`${navbarBackground} ${flexBetween} fixed top-0 w-full py-6`}>
       <div className={`${flexBetween} gap-x-24 mx-auto w-5/6`}>
         <div className={`${flexBetween} w-full gap-16`}>
           {isAboveMediumScreens ?
             (
               <>
-                <img style={{ width: '80px' }} alt="logo" src={Logo} />
+                <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage}>
+                  <img style={{ width: '80px' }} alt="logo" src={Logo} />
+                </Link>
 
                 <div className={`${flexBetween} w-full`}>
                   <div className={`${flexBetween} gap-8 text-md`}>
-                    <Link page="Home" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                     <Link page="Classes" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                     <Link page="Location" selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
                   </div>
@@ -42,7 +43,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     <p>{t('start') }</p>
                     <ActionButton setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
                   </div> :
-                    <div>
+                    <div className="text-right">
                       <Htext> {t('welcome')}<span className='text-primary-100'> KIDCODIA </span></Htext>
                     </div>
 

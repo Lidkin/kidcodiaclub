@@ -1,5 +1,3 @@
-import { plugin } from 'postcss';
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -11,7 +9,7 @@ export default {
       fontSize: {
         dxs: "0.6rem",
         pxs: "0.7rem",
-        ldxs: "0.8rem",
+        ldxs: "0.75rem",
         lpxs: "0.9rem",
         dsm: "3vw",
         tsm: "4vw",
@@ -44,7 +42,7 @@ export default {
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
-        manrope: ["Manrope", "sans-serif", '550']
+        manrope: ["Manrope", "sans-serif"]
       },
       content: {
         kidcodiatext: "url('./assets/bg-kidcodia.png')",

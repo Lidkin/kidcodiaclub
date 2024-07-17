@@ -8,7 +8,9 @@ import pythonMob from "@/assets/mobile/python-example.png";
 import scratchMob from "@/assets/mobile/scratch-example.png";
 import javascriptMob from "@/assets/mobile/js-example.png";
 import logicMob from "@/assets/mobile/logic-example.png";
-import kidcodia from '@/assets/kidcodia-text-location.png';
+// import kidcodia from '@/assets/bg-kidcodia.png';
+import Kid from '@/assets/kid.png';
+import Codia from '@/assets/CODIA.png';
 import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
 import Class from './Class';
@@ -98,12 +100,12 @@ const Classes = ({ setSelectedPage }: Props) => {
                         visible: { opacity: 1, x: 0 }
                     }}
                 >
-                    <Htext> { t('Classes').toUpperCase()} </Htext>
+                    <Htext> {t('Classes').toUpperCase()} </Htext>
                 </motion.div>
                 <div className='flex justify-center items-center'>
                     <div className={isAboveMediumScreens ?
                         'parent-class mb-10 mx-10 grid grid-cols-2 w-5/6' :
-                        'flex flex-col'}
+                        'flex flex-col max-w-screen-md w-full'}
                     >
                         {classes.map((item: ClassType, index) => (
                             <div key={index} className='class' ref={el => (classRefs.current[index] = el)}>
@@ -124,13 +126,23 @@ const Classes = ({ setSelectedPage }: Props) => {
                     </div>
                 </div>
             </motion.div>
-            <div className='kidcodia w-5/6 flex'>
-                <div className='mx-auto'>
-                    <div className='flex w-5/6 h-fit absolute -translate-x-[40%] translate-y-[2vw]'>
-                        <img className='w-full max-w-full' src={kidcodia} alt="externals-developers-institute" />
-                    </div>
-                </div>
+
+            {isAboveMediumScreens && <div className="relative w-full flex justify-center landscape:w-0 -bottom-20">
+                <img src={Codia} alt="background" className='absolute object-contain' />
+                <motion.img
+                    src={Kid}
+                    alt="moving"
+                    className='absolute items-center'
+                    initial={{ x: '-1%' }}
+                    animate={{ x: '1%' }}
+                    transition={{
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        duration: 5,
+                    }}
+                />
             </div>
+            }
         </section>
     )
 }

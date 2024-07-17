@@ -20,7 +20,8 @@
 }
 
 /* ===================== */
-/* /* */
+/* */
+
 .overlay {
     padding: 0 1px;
     height: 90%;
@@ -29,6 +30,7 @@
 .overblock {
     padding: 20px 50px;
 }
+
 /* ============== */
 #javascript,
 #logic {
@@ -37,7 +39,7 @@
     right: 70px;
 }
 
-.images{
+.images {
     padding: 10px;
 }
 
@@ -55,7 +57,7 @@
     font-size: 1.1rem;
 }
 
-.overblock>p{
+.age {
     font-size: 1.2rem;
 }
 
@@ -64,70 +66,33 @@
     padding: 5px 0;
 }
 
-.parent-class{
+.parent-class {
     gap: 1.25rem;
 }
 
+
 /* portrait done */
 
-@media (300px < width <=350px) and (orientation: portrait){
+@media (300px < width <=350px) and (orientation: portrait) {
     .paragraph {
-            font-size: 0.7rem;
-        }
-    
-        .overblock>p {
-            font-size: 0.75rem;
-        }
-    
-        .description {
-            font-size: 0.65rem;
-            padding: 0 5px;
-        }
-    
-        .overblock {
-            padding: 0;
-        }
-    
-        .overlay {
-            padding: 0 1px;
-            height: 90%;
-        }
-    
-        .class {
-            padding: 5px 0;
-        }
-    
-        .images {
-            padding: 10px 0;
-        }
-    
-        #javascript,
-        #logic {
-            width: 80px;
-            bottom: 35px;
-            right: 35px;
-        }
-}
-
-@media (350px < width <=400px) and (orientation: portrait) {
-    .paragraph {
-            font-size: 0.85rem;
-        }
-    
-    .overblock>p {
-        font-size: 0.95rem;
+        font-size: 0.7rem;
     }
-    .description {
+
+    .age {
         font-size: 0.75rem;
+    }
+
+    .description {
+        font-size: 0.65rem;
         padding: 0 5px;
     }
 
-    .overblock{
+    .overblock {
         padding: 0;
     }
 
     .overlay {
-        padding: 0 1px;
+        padding: 0 2px;
         height: 90%;
     }
 
@@ -138,6 +103,46 @@
     .images {
         padding: 10px 0;
     }
+
+    #javascript,
+    #logic {
+        width: 80px;
+        bottom: 35px;
+        right: 35px;
+    }
+}
+
+@media (350px < width <=400px) and (orientation: portrait) {
+    .paragraph {
+        font-size: 0.85rem;
+    }
+
+    .age {
+        font-size: 0.95rem;
+    }
+
+    .description {
+        font-size: 0.75rem;
+        padding: 0 5px;
+    }
+
+    .overblock {
+        padding: 0 10px;
+    }
+
+    .overlay {
+        padding: 0 2px;
+        height: 90%;
+    }
+
+    .class {
+        padding: 5px 0;
+    }
+
+    .images {
+        padding: 10px 0;
+    }
+
     #javascript,
     #logic {
         width: 90px;
@@ -151,9 +156,10 @@
         font-size: 0.95rem;
     }
 
-    .overblock>p {
+    .age {
         font-size: 1.05rem;
     }
+
     .description {
         font-size: 0.85rem;
     }
@@ -161,8 +167,9 @@
     .overblock {
         padding: 0;
     }
+
     .overlay {
-        padding: 0 1px;
+        padding: 0 5px;
         height: 90%;
     }
 
@@ -182,19 +189,23 @@
 }
 
 @media (500px < width <=600px) and (orientation: portrait) {
+
     #javascript,
-        #logic {
-            width: 110px;
-            bottom: 70px;
-            right: 70px;
-        }
+    #logic {
+        width: 110px;
+        bottom: 70px;
+        right: 70px;
+    }
+
     .class {
         margin: 5px 0;
         padding: 10px 25px;
     }
-    .overblock{
+
+    .overblock {
         padding: 0 10px;
     }
+
     .description {
         font-size: 0.9rem;
     }
@@ -203,33 +214,41 @@
         font-size: 1rem;
     }
 
-    .overblock>p {
+    .age {
         font-size: 1.1rem;
     }
-    .text{
+
+    .text {
         padding: 0;
     }
 }
+
 @media (600px < width <=700px) and (orientation: portrait) {
     .overblock {
         padding: 0 15px;
     }
+
     .class {
         padding: 0 25px;
     }
 }
+
 @media (700px < width <=800px) and (orientation: portrait) {
-    .overlay{
+    .overlay {
         height: 90%;
     }
+
     .overblock {
         padding: 0 25px;
     }
+
     .class {
         padding: 0 50px;
     }
 }
+
 @media (600px < width <=800px) and (orientation: portrait) {
+
     #javascript,
     #logic {
         width: 120px;
@@ -240,12 +259,13 @@
 
 @media (800px < width <=950px) and (orientation: portrait) {
     .overlay {
-            height: 90%;
-        }
+        height: 90%;
+    }
 
     .overblock {
         padding: 20px 50px;
     }
+
     .class {
         padding: 0 100px;
     }
@@ -258,61 +278,88 @@
     }
 }
 
-@media (width <= 950px) and (orientation: portrait) {
-    .kidcodia{
-        visibility: hidden;
-        height: 0;
-    }
-}
-
-@media (width >= 950px) and (orientation: landscape) {
+@media (width <=950px) and (orientation: portrait) {
     .kidcodia {
         visibility: hidden;
         height: 0;
     }
 }
 
+@media (1400px> width >=950px) and (orientation: landscape) {
+#classes {
+    margin-top: 50px;
+}
+
+.class {
+    padding: 0 5px;
+}
+
+.overblock {
+    padding: 20px;
+}
+
+}
+
 @media (width > 950px) and (orientation: portrait) {
     .class {
         padding: 0;
     }
-    .parent-class{
+
+    .parent-class {
         margin-top: 40px;
-        row-gap: 5vh;
+        row-gap: 1vh;
     }
-    .overblock{
+
+    .overlay{
+        height: 35vw;
+    }
+
+    .overblock {
         padding: 0 5px;
     }
-.images{
-    padding-top: 5vh;
-}
-.kidcodia{
 
-}
-    
+    .images {
+        padding-top: 5vh;
+    }
+
+    .description {
+        font-size: 0.75rem;
+    }
+
+    .paragraph {
+        font-size: 0.85rem;
+    }
+
+    .age {
+        font-size: 0.9rem;
+    }
 }
 
 /* landscape */
 @media (500px < width <=750px) and (orientation: landscape) {
+
     #javascript,
-        #logic {
-            width: 90px;
-            bottom: 60px;
-            right: 70px;
-        }
+    #logic {
+        width: 90px;
+        bottom: 60px;
+        right: 70px;
+    }
 }
-@media (750px <= width < 950px)
- and (height <= 400px) and (orientation: landscape) {
-    .class{
+
+@media (750px <=width < 950px) and (height <=400px) and (orientation: landscape) {
+    .class {
         margin: 40px;
     }
-    .overlay{
+
+    .overlay {
         padding: 0 40px;
     }
-    .overblock{
+
+    .overblock {
         padding: 0 5px;
         height: 94vh;
-    } 
+    }
+
     #javascript,
     #logic {
         width: 120px;
@@ -321,38 +368,44 @@
     }
 }
 
-@media (750px <= width < 950px)
- and (400px < height <= 500px) and (orientation:landscape){
+@media (750px <=width < 950px) and (400px < height <=500px) and (orientation:landscape) {
+
     #javascript,
-        #logic {
-            width: 160px;
-            bottom: 90px;
-            right: 80px;
-        }
+    #logic {
+        width: 160px;
+        bottom: 90px;
+        right: 80px;
+    }
 }
 
 /*width > 950px  */
-@media (950px < width <= 1050px) and (height >= 800px) and (orientation:landscape) {
-    .class{
+@media (950px < width <=1050px) and (height >=800px) and (orientation:landscape) {
+    .class {
         padding: 0;
     }
+
     .overlay {
         height: 30vw;
     }
+
     .overblock {
         padding: 0 5px;
     }
+
     .description {
         font-size: 0.75rem;
     }
+
     .paragraph {
         font-size: 0.85rem;
     }
-    .overblock>p {
+
+    .age {
         font-size: 0.9rem;
     }
 }
-@media (950px <= width <= 1050px) and (600px < height < 800px) and (orientation:landscape) {
+
+@media (950px <=width <=1050px) and (600px <= height < 800px) and (orientation:landscape) {
     .class {
         padding: 0;
     }
@@ -373,7 +426,7 @@
         font-size: 0.85rem;
     }
 
-    .overblock>p {
+    .age {
         font-size: 0.9rem;
     }
 
@@ -384,7 +437,7 @@
 
 @media (1050px <=width <=1250px) and (600px < height < 800px) and (orientation:landscape) {
     .class {
-        padding: 0px;
+        padding: 0px;  
     }
 
     .overlay {
@@ -403,12 +456,42 @@
         font-size: 0.95rem;
     }
 
-    .overblock>p {
+    .age {
         font-size: 1.15rem;
     }
 }
 
-@media (1050px < width <= 1250px) and (height >= 800px) and (orientation:landscape) {
+@media (width > 1250px) and (600px < height < 800px) and (orientation:landscape) {
+    .class {
+        padding: 0px;
+    }
+
+    .parent-class {
+        column-gap: 5vw;
+    }
+
+    .overlay {
+        height: 30vw;
+    }
+
+    .overblock {
+        padding: 0 20px;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
+    .age {
+        font-size: 1.2rem;
+    }
+}
+
+@media (1050px < width <=1250px) and (height >=800px) and (orientation:landscape) {
     .class {
         padding: 0 20px;
     }
@@ -429,7 +512,7 @@
         font-size: 1rem;
     }
 
-    .overblock>p {
+    .age {
         font-size: 1.1rem;
     }
 
@@ -438,7 +521,7 @@
     }
 }
 
-@media (1250px < width <=1400px) and ( 950px > height >= 800px) and (orientation:landscape) {
+@media (1250px < width <=1400px) and (950px > height >=800px) and (orientation:landscape) {
     .class {
         padding: 0 20px;
     }
@@ -459,7 +542,7 @@
         font-size: 1rem;
     }
 
-    .overblock>p {
+    .age {
         font-size: 1.1rem;
     }
 
@@ -468,7 +551,68 @@
     }
 }
 
-@media (1600px >= width > 1400px) and ( height >= 950px) and (orientation:landscape) {
+@media (width > 1400px) and (height >=800px) and (orientation:landscape) {
+    .class {
+        padding: 0 20px;
+    }
+
+    .overlay {
+        height: 30vw;
+        padding: 20px;
+    }
+
+    .overblock {
+        padding: 0 10px;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .paragraph {
+        font-size: 1.1rem;
+    }
+
+    .age {
+        font-size: 1.2rem;
+    }
+
+    .parent-class {
+        row-gap: 1.5rem;
+    }
+}
+
+@media (width > 1250px) and (height >=1000px) and (orientation:landscape) {
+    .class {
+        padding: 0 20px;
+    }
+
+    .overlay {
+        height: 27vw;
+    }
+
+    .overblock {
+        padding: 0 10px;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .paragraph {
+        font-size: 1rem;
+    }
+
+    .age {
+        font-size: 1.1rem;
+    }
+
+    .parent-class {
+        row-gap: 1.5rem;
+    }
+}
+
+@media (1600px >=width > 1400px) and (height >=950px) and (orientation:landscape) {
     .class {
         padding: 0 20px;
     }
@@ -481,58 +625,3 @@
         padding: 0 10px;
     }
 }
-/*
-@media (1200px > width >= 950px)
- and (height < 700px) and (orientation:landscape) {
-    .overblock {
-        padding: 0 5px;
-    }
-
-    .overlay {
-        height: 300px;
-    }
-
-    .description {
-        font-size: 0.75rem;
-    }
-
-    .paragraph {
-        font-size: 0.85rem;
-    }
-
-    .overblock>p {
-        font-size: 0.9rem;
-    }
-
-    #javascript,
-    #logic {
-        width: 95px;
-        bottom: 60px;
-        right: 60px;
-    }
-
-    .parent-class{
-        column-gap: 5rem;
-    }
-}
-
-@media (width >= 950px) and (1500px >= height > 800px) and (orientation:landscape){
-    .overlay{
-        height: 400px;
-    }
-    .overblock {
-        padding: 0 10px;
-    }
-}
-
-@media (width >= 950px) and (1500px < height <= 2500px) and (orientation:landscape) {
-    .overlay {
-        height: 400px;
-    }
-
-    .overblock {
-        padding: 0 10px;
-    }
-}
-
-*/

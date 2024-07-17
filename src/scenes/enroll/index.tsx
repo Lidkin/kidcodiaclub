@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
 import { useState, useRef } from 'react';
 import { ref, uploadBytes } from 'firebase/storage';
-import storage from '@/firebaseconfig';
-import "./enroll.css";
+import {storage} from '@/firebaseconfig';
+import './enroll.css';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { useTranslation } from 'react-i18next';
 
@@ -38,14 +38,14 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
     const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = parseInt(event.target.value);
-        classesRef.current.forEach((ref) => {            
+        classesRef.current.forEach((ref) => {
             if (ref) {
-                const minAge = ref.id.replace('key','');
+                const minAge = ref.id.replace('key', '');
                 if (value < parseInt(minAge)) {
                     ref.disabled = true;
                     ref.checked = false;
                 } else {
-                   ref.disabled = false;
+                    ref.disabled = false;
                 }
             }
         });
@@ -93,7 +93,6 @@ const Enroll = ({ setSelectedPage }: Props) => {
         }
     };
 
-
     const handleCheckboxChange = (day: string) => {
         let weekDays: string[] = [];
 
@@ -122,7 +121,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
     const handleButtonClick = async () => {
         validateMin();
-
+        
         const form = formRef.current;
         if (form && form.checkValidity()) {
 
@@ -175,7 +174,6 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
     return (
         <section id='enroll' className='mx-auto w-5/6 pt-[5vw] xxs:pt-[100px]'>
-            {/* className='mx-auto w-5/6 xxxs:pt-24 md:pt-32 pb-32 portrait:pt-28 xxxs:text-xs md:text-[_1rem] */}
             <motion.div
                 onViewportEnter={() => setSelectedPage(SelectedPage.Enroll)}>
                 <motion.div
@@ -229,10 +227,20 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                 required
                                 className={`${inputStyles} mt-3`} />
+                            
+                            {/* phone */}
+                            <input type="tel"
+                                name="tel"
+                                placeholder={t('form_phone').toUpperCase()}
+                                maxLength={50}
+                                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+                                required
+                                className={`${inputStyles} mt-3`} />
+
 
                             {/* number of kids */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
-                                <div className={`kids inline-flex justify-between ${language === 'ru' && 'w-[100%]'}`}>
+                                <div className={`kids flex justify-between items-center ${language === 'ru' && 'w-[100%]'}`}>
                                     <label className='text-white pr-5'>{t('form_num_kids').toUpperCase()}</label>
                                     <input type="number"
                                         name="number_of_kids"
@@ -243,36 +251,36 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                         required
                                         onChange={handleChildrenChange}
                                         ref={(el) => (valueRef.current = el)}
-                                        className='appearance-none w-11 block pl-4 border rounded-md text-gray-100 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                        className='appearance-none justify-center w-11 h-fit block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                     />
                                 </div>
                             </div>
 
                             {/* kid's age */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
-                                <p className='text-white pr-2'>{ language === 'ru' ? t('form_age_classes').toUpperCase() : t('form_age_classes') }</p>
+                                <p className='text-white pr-2'>{language === 'ru' ? t('form_age_classes').toUpperCase() : t('form_age_classes')}</p>
                                 <div className="kidparent items-center">
                                     {[...Array(numKids)].map((_, index) => (
                                         index + 1 <= 6 &&
-                                        <div key={index} className='kid flex justify-between gap-1 my-2 px-3'>
-                                            <div className='kidage flex justify-between h-fit'>
-                                                    <label >
-                                                        { t('kids').split(',')[index]}
+                                        <div key={index} className='kid flex justify-between gap-2 my-2 px-3'>
+                                            <div className='kidage flex md:justify-between md:h-fit'>
+                                                <label className='text-center pr-2 text-gray-250'>
+                                                    {t('kids').split(',')[index]}
                                                 </label>
                                                 <input
-                                                        type="number"
-                                                        name={`child_${index + 1}_age`}
-                                                        defaultValue={6}
-                                                        min={6}
-                                                        max={16}
-                                                        required
-                                                        onChange={handleAgeChange}
-                                                        className='appearance-none block w-11 pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                    type="number"
+                                                    name={`child_${index + 1}_age`}
+                                                    defaultValue={6}
+                                                    min={6}
+                                                    max={16}
+                                                    required
+                                                    onChange={handleAgeChange}
+                                                    className='appearance-none text-[16px] justify-center w-11 h-fit py-[1px] block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                                 />
                                             </div>
-                                            <div className='classes'>
+                                            <div className='classes-name mb-1'>
                                                 {classes.map((item, indx) => (
-                                                    <div key={`${index}-${Object.values(item)}`} className='child-classes w-full'>
+                                                    <div key={`${index}-${Object.values(item)}`} className='child-classes w-full text-gray-250'>
                                                         <label>{Object.values(item)}</label>
                                                         <input
                                                             type='checkbox'
@@ -285,7 +293,6 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                                     </div>
                                                 ))}
                                             </div>
-
                                         </div>
                                     ))}
                                 </div>
@@ -296,7 +303,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 <p className='text-white'>{radioText}</p>
                                 <div className='daysparent w-full flex py-1 flex-wrap justify-between'>
                                     {numOfDays.map(day => (
-                                        <div key={day} className='days inline-flex justify-between md:text-md items-center'>
+                                        <div key={day} className='days flex justify-between md:text-md items-center'>
                                             <label className='text-gray-250 mx-1'>{day === 1 ? day + ' ' + t('days').split(',')[0].toUpperCase() : day + ' ' + t('days').split(',')[1].toUpperCase()}</label>
                                             <input
                                                 name="num_of_days"
@@ -316,9 +323,10 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 <p className='text-white'>{checkboxText}</p>
                                 <div className='week w-full flex py-1 md:gap-1 justify-between'>
                                     {weekDaysArr.map((day, index) => (
-                                        <div key={day} className='weekday inline-flex justify-between items-center'>
-                                            <label className='text-gray-250'>{day}</label>
+                                        <div key={day} className='weekday xxs:w-fit px-3 flex justify-between items-center'>
+                                            <label className='text-gray-250 xs:landscape:pr-3'>{day}</label>
                                             <input
+                                                className='mb-1'
                                                 name="days_of_week"
                                                 type="checkbox"
                                                 value={selectedDays}
@@ -334,7 +342,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
                             {/* range of time */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3 flex-col items-center'>
-                                <p className='text-white mr-2 w-2/5'>{t('form_times').toUpperCase()}</p>
+                                <p className='text-white mr-2'>{t('form_times').toUpperCase()}</p>
                                 {selectedDays.map((day, index) => (
                                     <div className="mt-3" key={index}>
                                         <p>{day}</p>
@@ -375,7 +383,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                         {t('enroll')}
                                     </button>
                                 )}
-                                {isSubmitting && <p className='text-lg text-primary-500 font-bold'>{ t('process')}</p>}
+                                {isSubmitting && <p className='text-lg text-primary-500 font-bold'>{t('process')}</p>}
                                 {isSubmitted && <p className='text-lg text-primary-500 font-bold'>{t('thanks')}</p>}
                             </div>
                         </form>

@@ -28,19 +28,17 @@ const Class = ({ active, id, name, age, image, imageMob, gif, mediumScreen, setS
       <p className='text-2xl bg-primary-100 rounded-t-lg text-center py-2 text-white'>{name}</p>
       <div className={`overlay ${overlayStyles} ${hover} flex justify-between items-center rounded-b-lg`}>
         <div className='overblock h-full flex text-center text-white flex-col items-center justify-between whitespace-normal py-2'>
-          <p className="font-bold">{ t('age')} {age}</p>
-          <div className="text flex justify-between flex-col">
-            <p className='description'>{t(`${id}_description`)}</p>
-            <p className="paragraph">{t('time')}</p>
-            <p className="paragraph">{t('price')}</p>
-            <p className="paragraph">{t('classroom_capacity')}</p>
-          </div>
-          <div className="button mb-3 xl:mb-5">
+          <p className="age font-bold">{t('age')} {age}</p>
+          <p className='description'>{t(`${id}_description`)}</p>
+          <p className="paragraph">{t('time')}</p>
+          <p className="paragraph">{t('price')}</p>
+          <p className="paragraph">{t('classroom_capacity')}</p>
+          <div className="button my-3 xl:my-5">
             <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
           </div>
         </div>
       </div>
-      <img className="images z-1" src={mediumScreen ? image : imageMob} alt={`${name}-image`} />
+      <img className="images z-1 w-full" src={mediumScreen ? image : imageMob} alt={`${name}-image`} />
       {name === 'JavaScript' ? <img id="javascript" className={`${imgAbs} w-[_20vw] md:w-[_10vw] rounded-xl`} src={gif} alt={`${name}-gif`} /> :
         name === 'Logic Lab' ? <img id="logic" className={`${imgAbs} w-[_20vw] md:w-[_10vw] rounded-xl`} src={gif} alt={`${name}-gig`} /> : <></>}
     </div>

@@ -33,15 +33,15 @@ const Location = ({ setSelectedPage }: Props) => {
           <Htext>{ t('Location').toUpperCase()}</Htext>
         </motion.div>
         <p className="py-4 xs:py-10">{t('address')} <br />Ramat Gan, Bezalel St 8, {t('floors')}</p>
-        <iframe className='w-full rounded-lg lg:landscape:h-[_65vh] landscape:h-[_50vh] portrait:h-[_65vh] mb-20'
+        <iframe className='w-full rounded-lg lg:landscape:h-[_80vh] landscape:h-[_70vh] portrait:h-[_80vh] mb-20'
           referrerPolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDCV3q-VlEzBJnqN3SC8B60V_RTx52_L20&q=Bezalel+St+8,Ramat+Gan+Israel" //Developers+Institute,Ramat+Gan+Israel
           allowFullScreen>
         </iframe>
       </motion.div>
-      <div className='md:hidden md:h-0 h-fit w-5/6 flex'>
+      <div className='h-fit w-5/6 flex'>
         <div className='mx-auto'>
-          <div className='flex w-5/6 h-fit absolute -translate-x-[40%] -translate-y-[5vw]'>
+          <div className='flex w-5/6 h-fit absolute -translate-x-[40%] -translate-y-[5vw] md:w-0'>
             <img className='w-full max-w-full' src={kidcodia} alt="externals-developers-institute" />
           </div>
         </div>

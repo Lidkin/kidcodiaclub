@@ -1,14 +1,16 @@
 import { SelectedPage } from "@/shared/types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { useTranslation } from "react-i18next";
+import { ReactNode } from "react";
 
 type Props = {
     page: string;
     selectedPage: SelectedPage;
     setSelectedPage: (value: SelectedPage) => void;
+    children?: ReactNode;
 };
 
-const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
+const Link = ({ page, selectedPage, setSelectedPage, children }: Props) => {
     const lowerCasePage = page.toLowerCase().replace(/ /g, "") as SelectedPage;
     const { t } = useTranslation();
     return (
@@ -19,7 +21,7 @@ const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
             href={`#${lowerCasePage}`}
             onClick={() => setSelectedPage(lowerCasePage)}
         >
-            {t(`${page}`)}
+            {children ? children : t(`${page}`)}
         </AnchorLink>
     );
 };

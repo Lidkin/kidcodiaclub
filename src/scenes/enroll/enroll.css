@@ -30,9 +30,24 @@ form {
 }
 
 /* ==================== */
+.weekday{
+    align-items: center;
+}
+
+.week-day {
+    width: calc(inherit + 20px);
+}
 
 .image {
     margin-top: 10px;
+}
+
+.days input {
+    margin: 0;
+}
+
+.kidage input {
+    margin: 0;
 }
 
 .time, .days, .weekday, .kidage, .kid {
@@ -44,7 +59,7 @@ form {
 .days,
 .weekday,
 .kidage .kidparent {
-padding: 5px 10px;
+    padding: 10px;
 }
 
 .timeslot {
@@ -74,15 +89,8 @@ padding: 5px 10px;
 .kidage {
     width: 140px;
     margin-bottom: 10px;
+    align-items: center;
 }
-/*
-.kidparent:nth-child(3){
-    margin-bottom: -10px;
-}
-.kidparent:last-child {
-    margin-bottom: -10px;
-}
-*/
 .kids input {
     width: 2.6rem;
 }
@@ -90,9 +98,10 @@ padding: 5px 10px;
 .days {
     width: 120px;
 }
+
 .weekday{
-    width: 150px;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 .week:last-child {
@@ -102,6 +111,7 @@ padding: 5px 10px;
 .weekday input {
     width: 1rem;
     height: 1rem;
+    margin: 0;
 }
 @media (300px < width <=390px){
     .kidage{
@@ -120,14 +130,13 @@ padding: 5px 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 5px 0;
     }
     .week{
         flex-direction: column;
     }
     .weekday{
         width: 100%;
-        display: inline-flex;
+        display: flex;
         flex-direction: row;
     }
 }
@@ -150,7 +159,6 @@ padding: 5px 10px;
         align-items: center;
         text-align: center;
         background: none;
-        padding-bottom: 0;
     } 
     .week{
         background-color: hsl(189, 93%, 72%);
@@ -181,14 +189,21 @@ padding: 5px 10px;
 @media (600px < width <=750px) and (orientation: landscape) {
         .days {
             width: 20%;
-            padding: 0 2px;
         }
     
         .weekday {
             width: 25%;
-            padding: 0 2px;
         }
     }
+
+@media (width > 580px ) and (orientation: portrait) {   
+    .weekday label{
+        padding-right: 10px;
+    }
+    .kidage label {
+        padding-right: 10px;
+    }
+}
 
 @media (950px < width <=2000px) { 
     .kidage{
@@ -222,17 +237,6 @@ padding: 5px 10px;
     }
 } 
 
-/*
-@media (width > 2000px){
-    .kidparent {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-content: space-around;
-        justify-items: center;
-    }
-}
-*/
-
 .kidparent{
     width: 100%;
 }
@@ -240,12 +244,13 @@ padding: 5px 10px;
     width: 100%;
 }
 
-.classes {
+.classes-name {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     gap: 5px;
+    padding: 5px 0;
 }
 
 .child-classes {
@@ -268,12 +273,13 @@ padding: 5px 10px;
 }
 
 @media (1200px > width >= 650px) {
-.classes{
+.classes-name{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     gap: 5px;
+    padding: 5px 0;
 }
 .child-classes  {
     display: flex;
@@ -295,12 +301,13 @@ padding: 5px 10px;
 }
 
 @media (700px > width >= 500px) {
-    .classes {
+    .classes-name {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         justify-items: center;
         gap: 5px;
+        padding: 5px 0;
     }
 
     .child-classes {
@@ -329,12 +336,13 @@ padding: 5px 10px;
 }
 
 @media (width < 500px) {
-    .classes {
+    .classes-name {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(2, 2fr);
         justify-items: center;
         gap: 5px;
+        padding: 5px 0;
     }
 
     .child-classes {
@@ -359,13 +367,5 @@ padding: 5px 10px;
 
     .kidage label {
         padding-bottom: 3px;
-    }
-                .kidage input {
-                    width: 2rem;
-                    padding: 0;
-                    text-align: center;
-                }
+    }    
 }
-/* md:grid-cols-3 mlg:grid-cols-4 mlg:grid-rows-1 $ {
-    numKids < 3 ? `md: grid-rows-1`: `md:grid-rows-2`
-} */
