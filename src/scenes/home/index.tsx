@@ -13,8 +13,6 @@ type Props = {
     setSelectedPage: (value: SelectedPage) => void;
 }
 
-console.log(window.innerWidth, window.innerHeight)
-
 const Home = ({ setSelectedPage }: Props) => {
     const isAboveMediumScreens = useMediaQuery(QueryWidth.MediumWidth);
     const { t } = useTranslation();

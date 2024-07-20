@@ -23,7 +23,9 @@
     "form_phone": "phone number",
     "form_num_kids": "number of kids",
     "form_age_classes": "KID's AGE AND CLASS",
+    "form_age": "AGE",
     "kids": "1st KID, 2nd KID, 3rd KID, 4th KID, 5th KID, 6th KID",
+    "form_kid_name": "KID's NAME",
     "form_num_days": "HOW MANY DAYS YOU WANT IN THE WEEK",
     "form_days":"SELECT YOUR PREFERRED DAYS OF THE WEEK",
     "days": "day,days",
@@ -35,6 +37,7 @@
     "footer_two": "Develop critical thinking, logic, and problem-solving skills",
     "footer_three": "Explore programming and technology",
     "contact": "Contact us: ",
+    "whatsapp": "start the chat",
     "for": "FOR A CLASS",
     "process": "In process...",
     "thanks": "Thanks for enrolling!"

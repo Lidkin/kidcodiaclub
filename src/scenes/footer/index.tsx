@@ -30,8 +30,11 @@ const Footer = () => {
                             {t('footer_three')}
                         </p>
                         <div className='w-fit'>
-                            <p className='text-nowrap'>{t('contact').toUpperCase()}</p>                             
-                            <p className='flex'><img className='pr-1' src={Icon} alt='whatsapp-icon' /> +972-58-779-07-25</p>                            
+                            <p className='text-nowrap'>{t('contact').toUpperCase()}</p> 
+                            <a href='https://wa.me/972587790725'>
+                                <p className='flex'><img className='pr-1' src={Icon} alt='whatsapp-icon' />058-779-07-25</p> 
+                                {/* {t('whatsapp').toUpperCase()} 058-779-07-25 */}
+                            </a>    
                         </div>    
                     </div>
                 </div>

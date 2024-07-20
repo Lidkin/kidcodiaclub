@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Htext from '@/shared/Htext';
 import { useState, useRef } from 'react';
 import { ref, uploadBytes } from 'firebase/storage';
-import {storage} from '@/firebaseconfig';
+import { storage } from '@/firebaseconfig';
 import './enroll.css';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { useTranslation } from 'react-i18next';
@@ -30,25 +30,35 @@ const Enroll = ({ setSelectedPage }: Props) => {
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
     const checkboxRefs = useRef<(HTMLInputElement | null)[]>([]);
-    const classesRef = useRef<(HTMLInputElement | null)[]>([]);
+    const [ages, setAges] = useState<number[]>(new Array(numKids).fill(6));
+    const classesRef = useRef<Array<Array<HTMLInputElement | null>>>([]);
     const valueRef = useRef<HTMLInputElement | null>();
     const formRef = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-    const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = parseInt(event.target.value);
-        classesRef.current.forEach((ref) => {
-            if (ref) {
-                const minAge = ref.id.replace('key', '');
-                if (value < parseInt(minAge)) {
-                    ref.disabled = true;
-                    ref.checked = false;
-                } else {
-                    ref.disabled = false;
-                }
-            }
+
+        setAges(prevAges => {
+            const newAges = [...prevAges];
+            newAges[index] = value;
+            return newAges;
         });
+
+        if (classesRef.current[index]) {
+            classesRef.current[index].forEach((ref) => {
+                if (ref) {
+                    const minAge = ref.id.replace('key', '');
+                    if (value < parseInt(minAge)) {
+                        ref.disabled = true;
+                        ref.checked = false;
+                    } else {
+                        ref.disabled = false;
+                    }
+                }
+            });
+        }
     };
 
     const validateMin = (value: number = 0, weekDays: string[] = []) => {
@@ -121,7 +131,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
 
     const handleButtonClick = async () => {
         validateMin();
-        
+
         const form = formRef.current;
         if (form && form.checkValidity()) {
 
@@ -227,7 +237,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                                 required
                                 className={`${inputStyles} mt-3`} />
-                            
+
                             {/* phone */}
                             <input type="tel"
                                 name="tel"
@@ -251,45 +261,61 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                         required
                                         onChange={handleChildrenChange}
                                         ref={(el) => (valueRef.current = el)}
-                                        className='appearance-none justify-center w-11 h-fit block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                        className='appearance-none text-center text-[16px] justify-center w-14 h-fit py-[1px] block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                     />
                                 </div>
                             </div>
 
                             {/* kid's age */}
-                            <div className='mt-3 w-full rounded-lg bg-primary-300 px-5 py-3'>
-                                <p className='text-white pr-2'>{language === 'ru' ? t('form_age_classes').toUpperCase() : t('form_age_classes')}</p>
-                                <div className="kidparent items-center">
+                            <div className='mt-3 w-full rounded-lg bg-primary-300 md:px-5 py-3'>
+                                <p className='text-white px-5'>{language === 'ru' ? t('form_age_classes').toUpperCase() : t('form_age_classes')}</p>
+                                <div className="kidparent items-center gap-2">
                                     {[...Array(numKids)].map((_, index) => (
                                         index + 1 <= 6 &&
-                                        <div key={index} className='kid flex justify-between gap-2 my-2 px-3'>
-                                            <div className='kidage flex md:justify-between md:h-fit'>
-                                                <label className='text-center pr-2 text-gray-250'>
-                                                    {t('kids').split(',')[index]}
-                                                </label>
-                                                <input
-                                                    type="number"
-                                                    name={`child_${index + 1}_age`}
-                                                    defaultValue={6}
-                                                    min={6}
-                                                    max={16}
-                                                    required
-                                                    onChange={handleAgeChange}
-                                                    className='appearance-none text-[16px] justify-center w-11 h-fit py-[1px] block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
-                                                />
+                                        <div key={index} className='justify-between items-center flex flex-col xxs:flex-row m-2 xl:px-3 w-full border-2 rounded-lg'>
+                                            <div className='kidNameAge m-2 w-[90%] xxs:w-full'>
+                                                <p className='text-center text-gray-250'>{t('kids').split(',')[index]}</p>
+                                                <div className='kid flex-col w-full px-2'>
+                                                    <div className='kidage flex flex-row w-full text-[1rem] mb-1 items-center'>
+                                                        <label className='text-gray-250'>{t('form_age')}</label>
+                                                        <input
+                                                            type="number"
+                                                            name={`child_${index + 1}_age`}
+                                                            defaultValue={6}
+                                                            value={ages[index]}
+                                                            min={6}
+                                                            max={16}
+                                                            required
+                                                            onChange={(event) => handleAgeChange(event, index)}
+                                                            className='appearance-none text-center text-[16px] justify-center w-14 h-fit py-[1px] block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                        />
+                                                    </div>
+                                                    <div className='flex w-full flex-row justify-between items-center text-[1rem]'>
+                                                        <label className='text-left pr-2 text-gray-250'>{t('form_kid_name')}</label>
+                                                        <input type="text"
+                                                            name="name_of_kid"
+                                                            maxLength={100}
+                                                            className='appearance-none justify-center w-[16vw] h-fit block py-1 px-2 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className='classes-name mb-1'>
+                                            <div className='classes-name'>
                                                 {classes.map((item, indx) => (
                                                     <div key={`${index}-${Object.values(item)}`} className='child-classes w-full text-gray-250'>
-                                                        <label>{Object.values(item)}</label>
+                                                        <label className='text-center'>{Object.values(item)}</label>
                                                         <input
                                                             type='checkbox'
                                                             id={`${Object.keys(item)}`}
-                                                            name={`${Object.values(item)}_child_${index + 1}`}
+                                                            name={`${Object.values(item)}_child_${index}`}
                                                             disabled={Object.values(item).toString() !== 'LOGIC LAB' ? true : false}
-                                                            ref={(el) => (classesRef.current[indx] = el)}
+                                                            ref={(el) => {
+                                                                if (!classesRef.current[index]) {
+                                                                    classesRef.current[index] = [];
+                                                                }
+                                                                classesRef.current[index][indx] = el;
+                                                            }}
                                                         />
-
                                                     </div>
                                                 ))}
                                             </div>
@@ -304,7 +330,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                 <div className='daysparent w-full flex py-1 flex-wrap justify-between'>
                                     {numOfDays.map(day => (
                                         <div key={day} className='days flex justify-between md:text-md items-center'>
-                                            <label className='text-gray-250 mx-1'>{day === 1 ? day + ' ' + t('days').split(',')[0].toUpperCase() : day + ' ' + t('days').split(',')[1].toUpperCase()}</label>
+                                            <label className='text-gray-250 mx-1 text-center xxs:text-nowrap'>{day === 1 ? day + ' ' + t('days').split(',')[0].toUpperCase() : day + ' ' + t('days').split(',')[1].toUpperCase()}</label>
                                             <input
                                                 name="num_of_days"
                                                 type="radio"

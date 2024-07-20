@@ -55,10 +55,42 @@ form {
     background-color: hsl(189, 93%, 72%);
 }
 
+.kidNameAge{
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(1, 2fr);
+    gap: 5px;
+}
+
+.kid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    justify-items: center;
+    gap: 5px;
+    padding: 5px 0;
+}
+
+.kidage{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.classes-name {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    justify-items: center;
+    gap: 5px;
+    padding: 5px 0;
+}
+
 .time,
 .days,
-.weekday,
-.kidage .kidparent {
+.weekday
+{
     padding: 10px;
 }
 
@@ -83,16 +115,10 @@ form {
     width: 100%;
 }
 
-.kids {
-    width: 200px;
-}
 .kidage {
     width: 140px;
     margin-bottom: 10px;
     align-items: center;
-}
-.kids input {
-    width: 2.6rem;
 }
 
 .days {
@@ -200,9 +226,6 @@ form {
     .weekday label{
         padding-right: 10px;
     }
-    .kidage label {
-        padding-right: 10px;
-    }
 }
 
 @media (950px < width <=2000px) { 
@@ -240,18 +263,6 @@ form {
 .kidparent{
     width: 100%;
 }
-.kid{
-    width: 100%;
-}
-
-.classes-name {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    gap: 5px;
-    padding: 5px 0;
-}
 
 .child-classes {
     display: flex;
@@ -267,20 +278,10 @@ form {
     font-size: 1rem;
     line-height: 1.25rem;
     margin: 0;
-    padding: 1rem 0;
     width: 30%;
-    padding-right: 10px;
 }
 
 @media (1200px > width >= 650px) {
-.classes-name{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    gap: 5px;
-    padding: 5px 0;
-}
 .child-classes  {
     display: flex;
     flex-direction: column;
@@ -295,21 +296,11 @@ form {
     font-size: 0.85rem;
     line-height: 1.25rem;
     margin: 0;
-    padding: 1rem 0;
     width: 30%;
 }
 }
 
 @media (700px > width >= 500px) {
-    .classes-name {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: center;
-        gap: 5px;
-        padding: 5px 0;
-    }
-
     .child-classes {
         display: flex;
         flex-direction: column;
@@ -326,25 +317,11 @@ form {
         line-height: 1.25rem;
         align-items: center;
         margin: 0;
-        padding: 0.5rem 0;
         width: 20%;
-    }
-
-    .kidage label {
-        padding-bottom: 3px;
     }
 }
 
 @media (width < 500px) {
-    .classes-name {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 2fr);
-        justify-items: center;
-        gap: 5px;
-        padding: 5px 0;
-    }
-
     .child-classes {
         display: flex;
         flex-direction: column;
@@ -361,11 +338,6 @@ form {
         line-height: 1.25rem;
         align-items: center;
         margin: 0;
-        padding: 0.5rem 0;
         width: 20%;
     }
-
-    .kidage label {
-        padding-bottom: 3px;
-    }    
 }
