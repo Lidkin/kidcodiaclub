@@ -56,7 +56,7 @@ function App() {
       />
       <Home setSelectedPage={setSelectedPage} />
       <Classes setSelectedPage={setSelectedPage} />
-      <Address setSelectedPage={setSelectedPage}></Address>
+      <Address setSelectedPage={setSelectedPage} />
       <Enroll setSelectedPage={setSelectedPage} />
       <Footer />
     </div>

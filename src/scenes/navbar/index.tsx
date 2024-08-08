@@ -41,7 +41,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                   </div>
                   {selectedPage !== 'enroll' ? <div className={`${flexBetween} gap-8`}>
                     <p>{t('start') }</p>
-                    <ActionButton setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
+                    <ActionButton buttonName={SelectedPage.Enroll} setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
                   </div> :
                     <div className="text-right">
                       <Htext> {t('welcome')}<span className='text-primary-100'> KIDCODIA </span></Htext>

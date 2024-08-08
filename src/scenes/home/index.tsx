@@ -63,8 +63,8 @@ const Home = ({ setSelectedPage }: Props) => {
                             visible: { opacity: 1, x: 0 }
                         }}
                     >
-                        <ActionButton setSelectedPage={setSelectedPage}>
-                            {t('enroll')}
+                        <ActionButton buttonName={ SelectedPage.Classes} setSelectedPage={setSelectedPage}>
+                            {t('our_classes')}
                         </ActionButton>
                     </motion.div>
                 </div>

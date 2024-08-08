@@ -191,7 +191,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                     initial='hidden'
                     whileInView='visible'
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 0.1 }}
                     variants={{
                         hidden: { opacity: 0, x: -50 },
                         visible: { opacity: 1, x: 0 }
@@ -208,7 +208,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                 <div className="enroll justify-between gap-8 md:flex">
                     <motion.div
                         className='basis-3/5 md:mt-0 z-[5]'
-                        initial='hidden'
+                        initial={`${isAboveMediumScreens} ? hidden : visible`}
                         whileInView='visible'
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 1 }}
@@ -242,9 +242,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                             <input type="tel"
                                 name="tel"
                                 placeholder={t('form_phone').toUpperCase()}
-                                maxLength={50}
-                                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
-                                required
+                                maxLength={12}
                                 className={`${inputStyles} mt-3`} />
 
 
@@ -261,12 +259,12 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                         required
                                         onChange={handleChildrenChange}
                                         ref={(el) => (valueRef.current = el)}
-                                        className='appearance-none text-center text-[16px] justify-center w-14 h-fit py-[1px] block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                        className='appearance-none text-center text-[16px] w-14 h-fit py-[1px] block md:pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                     />
                                 </div>
                             </div>
 
-                            {/* kid's age */}
+                            {/* kid's info and classes */}
                             <div className='mt-3 w-full rounded-lg bg-primary-300 md:px-5 py-3'>
                                 <p className='text-white px-5'>{language === 'ru' ? t('form_age_classes').toUpperCase() : t('form_age_classes')}</p>
                                 <div className="kidparent items-center gap-2">
@@ -276,6 +274,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                             <div className='kidNameAge m-2 w-[90%] xxs:w-full'>
                                                 <p className='text-center text-gray-250'>{t('kids').split(',')[index]}</p>
                                                 <div className='kid flex-col w-full px-2'>
+                                                    {/* kid's age */}
                                                     <div className='kidage flex flex-row w-full text-[1rem] mb-1 items-center'>
                                                         <label className='text-gray-250'>{t('form_age')}</label>
                                                         <input
@@ -287,19 +286,21 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                                             max={16}
                                                             required
                                                             onChange={(event) => handleAgeChange(event, index)}
-                                                            className='appearance-none text-center text-[16px] justify-center w-14 h-fit py-[1px] block pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                            className='appearance-none block text-center text-[16px] w-14 h-fit py-[1px] md:pl-4 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                                         />
                                                     </div>
+                                                    {/* kid's name */}
                                                     <div className='flex w-full flex-row justify-between items-center text-[1rem]'>
-                                                        <label className='text-left pr-2 text-gray-250'>{t('form_kid_name')}</label>
+                                                        <label className='text-left xs:text-nowrap pr-2 text-gray-250'>{t('form_kid_name')}</label>
                                                         <input type="text"
                                                             name="name_of_kid"
                                                             maxLength={100}
-                                                            className='appearance-none justify-center w-[16vw] h-fit block py-1 px-2 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                                            className='appearance-none justify-center w-full xs:w-[16vw] h-fit block py-1 px-2 border rounded-md text-gray-250 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
+                                            {/* classes */}
                                             <div className='classes-name'>
                                                 {classes.map((item, indx) => (
                                                     <div key={`${index}-${Object.values(item)}`} className='child-classes w-full text-gray-250'>
@@ -307,7 +308,7 @@ const Enroll = ({ setSelectedPage }: Props) => {
                                                         <input
                                                             type='checkbox'
                                                             id={`${Object.keys(item)}`}
-                                                            name={`${Object.values(item)}_child_${index}`}
+                                                            name={`${Object.values(item)}_child_${index + 1}`}
                                                             disabled={Object.values(item).toString() !== 'LOGIC LAB' ? true : false}
                                                             ref={(el) => {
                                                                 if (!classesRef.current[index]) {

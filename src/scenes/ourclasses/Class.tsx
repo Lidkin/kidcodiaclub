@@ -29,12 +29,12 @@ const Class = ({ active, id, name, age, image, imageMob, gif, mediumScreen, setS
       <div className={`overlay ${overlayStyles} ${hover} flex justify-between items-center rounded-b-lg`}>
         <div className='overblock h-full flex text-center text-white flex-col items-center justify-between whitespace-normal py-2'>
           <p className="age font-bold">{t('age')} {age}</p>
-          <p className='description'>{t(`${id}_description`)}</p>
+          <p className="paragraph text-secondary-50 bg-gray-500 px-3 rounded-md">{t('price')}</p>
           <p className="paragraph">{t('time')}</p>
-          <p className="paragraph">{t('price')}</p>
           <p className="paragraph">{t('classroom_capacity')}</p>
+          <p className='description'>{t(`${id}_description`)}</p>
           <div className="button my-3 xl:my-5">
-            <ActionButton selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
+            <ActionButton buttonName={SelectedPage.Enroll} selectedPage={SelectedPage.Classes} setSelectedPage={setSelectedPage}>{t('enroll')}</ActionButton>
           </div>
         </div>
       </div>
